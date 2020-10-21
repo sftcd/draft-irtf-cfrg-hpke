@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-01T16:26:08.904503+00:00",
+  "timestamp": "2020-10-21T03:05:08.621243+00:00",
   "repo": "cfrg/draft-irtf-cfrg-hpke",
   "labels": [
     {
@@ -167,15 +167,15 @@
       "id": "MDU6SXNzdWU1MjEwMzQ0NDQ=",
       "title": "Add negative test vectors",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/20",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "The draft only has success test vectors. Negative ones would be good, too.",
       "createdAt": "2019-11-11T15:39:27Z",
-      "updatedAt": "2020-05-27T21:45:08Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-17T15:38:44Z",
+      "closedAt": "2020-10-17T15:38:44Z",
       "comments": []
     },
     {
@@ -1575,7 +1575,7 @@
       "id": "MDU6SXNzdWU2NDAwMTYyMjM=",
       "title": "Document use cases for different HPKE modes",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/114",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -1584,9 +1584,17 @@
       ],
       "body": "From JP's review, it might be helpful if the different modes had some text describing scenarios or use cases where they make sense. @bifurcation, what do you think?\r\n\r\ncc @blipp ",
       "createdAt": "2020-06-16T22:37:28Z",
-      "updatedAt": "2020-06-23T13:35:24Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2020-10-17T15:39:40Z",
+      "closedAt": "2020-10-17T15:39:40Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing given lack of interest. ",
+          "createdAt": "2020-10-17T15:39:40Z",
+          "updatedAt": "2020-10-17T15:39:40Z"
+        }
+      ]
     },
     {
       "number": 115,
@@ -1596,17 +1604,23 @@
       "state": "OPEN",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [
-        "chris-wood"
-      ],
+      "assignees": [],
       "labels": [
         "editorial"
       ],
       "body": "[The paper](https://eprint.iacr.org/2006/265.pdf) presents conditions for secure KEM/DEM constructions. We should absolutely cite it as related work.",
       "createdAt": "2020-06-16T22:38:31Z",
-      "updatedAt": "2020-06-23T13:35:24Z",
+      "updatedAt": "2020-10-17T15:40:52Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "cc @blipp, to see if this has been covered by the to-be-published analysis.",
+          "createdAt": "2020-10-17T15:40:52Z",
+          "updatedAt": "2020-10-17T15:40:52Z"
+        }
+      ]
     },
     {
       "number": 128,
@@ -1804,16 +1818,24 @@
       "id": "MDU6SXNzdWU2Nzk1Nzk1MDc=",
       "title": "Add recommended column to the IANA registry table",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/145",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "[Stephen writes](https://mailarchive.ietf.org/arch/msg/cfrg/7zhOHPFkCyZC00xLZnsEBT3o6ZU/):\r\n\r\n> The thing to ponder relates to the IANA considerations.\r\n> Why not add a \"recommended\" column a la TLS.  The RG can\r\n> hand over responsibility to some DEs appointed by the IESG\r\n> and call for the same setup as TLS.  (I.e. other than\r\n> the initial values recommended == yes requires IETF\r\n> standards track, otherwise spec required.) If we don't\r\n> do that then applications using HPKE will always each\r\n> need to say which suites are MUSTs, leading to IMO mostly\r\n> pointless variation and possibly worsening interop if\r\n> libraries implement disjoint sets of suites.\r\n\r\nThis seems reasonable, though I don't have a sense for how problematic the lack of a \"recommended\" column will be in the long term. @bifurcation, what do you think?",
       "createdAt": "2020-08-15T13:59:23Z",
-      "updatedAt": "2020-08-15T13:59:23Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2020-10-18T17:37:16Z",
+      "closedAt": "2020-10-18T17:37:16Z",
+      "comments": [
+        {
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think this is probably the wrong level for making those recommendations.  The countervailing risk to the one Stephen points out is that if we *do* define a \"recommended\" column here, then it's likely to conflict with similar recommendations at different points in the stack.  MLS already has a \"recommended\" column on its ciphersuites registry, which specifies HPKE algorithms among other things.   So just as we don't specify mandatory algorithms here, we shouldn't track recommendation status.  \r\n\r\nIn other words, all that stuff is designed to help ensure that implementations of TLS/MLS/etc. have cipher overlap, which is not what this document does.  We don't do anything about cipher selection / negotiation, and shouldn't.  The goal of this document is just to describe a construction that is secure if the underlying primitives are.",
+          "createdAt": "2020-10-18T17:35:50Z",
+          "updatedAt": "2020-10-18T17:35:50Z"
+        }
+      ]
     },
     {
       "number": 146,
@@ -1897,9 +1919,31 @@
       "labels": [],
       "body": "Currently, there is no `Serialize/Deserialize` function defined for KEM private keys. The primary reason someone might want this is if they were migrating from one HPKE library to another, and wanted to keep their long-term private keys the same. Currently, a user would have to dig into both implementations to find their internal representation and figure out how to convert between the two manually. The fact that go-hpke and rust-hpke have (I think) the same byte representation of secret keys is good, but it would be better if this were guaranteed by the spec.\r\n\r\nI propose `SerializeSk/DeserializeSk` functions (not married to those names) that do what you'd expect, with the small addition that `DeserializeSk` should reject secret keys that are equivalent to 0.\r\n\r\n**Addendum**\r\n\r\nI also think that `SerializeSk` should canonicalize secret keys. For P-curves, this would mean reducing modulo the curve order, and for X25519/X448 this would mean clamping the keys.\r\n\r\nThe reason I think we should do this is because users might want to save their secret keys using some storage mechanism of their choosing. They might have some expectations of secret key identity (e.g., as a key in a table or an item in a set), and it would be a lot more effort to scream \"equivalent keys are not identical!\" all across our docs than to just make sure that equivalent keys actually are identical.",
       "createdAt": "2020-09-11T22:50:31Z",
-      "updatedAt": "2020-09-11T22:50:45Z",
+      "updatedAt": "2020-10-17T20:27:10Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This came up again recently. Our solution was to pass around the DeriveKeyPair seed `ikm`, rather than the private keys themselves, though that incurs some cost. ",
+          "createdAt": "2020-10-17T15:42:56Z",
+          "updatedAt": "2020-10-17T15:42:56Z"
+        },
+        {
+          "author": "rozbb",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "This seems like a reasonable workaround, but I think it's too user-hostile for general use.\r\n\r\nIf a user used `GenerateKeyPair()` or threw away their `DeriveKeyPair()` IKM, and they want to migrate their long-term key to a new implementation, they're simply out of luck with no recourse. So it would be incumbent upon the user to keep their IKM around even if they had no current plans to migrate.\r\n\r\nOf course, we could require that secret keys also retain their seed IKM, but the actual problem here is assuming that IKM is safe to store indefinitely. Since there's no assumption on the pseudorandomness of the IKM (it just needs enough entropy), there might be some sensitive information in there which could be related to other secrets elsewhere (e.g., the IKM is a password that's partially or fully reused for some other service). Since `DeriveKeyPair()` uses a KDF, this isn't a problem if you store just the resulting secret key.\r\n\r\nThus, I think it makes it easier to Do The Right Thing if secret keys are serializable and we can throw away IKMs as soon as we KDF them.",
+          "createdAt": "2020-10-17T19:54:25Z",
+          "updatedAt": "2020-10-17T19:54:25Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I don\u2019t disagree with the overall ask to standardize private key serialization, but I do disagree with the general claim that using the seed is hostile. Since one can always derive the key from the seed, there\u2019s no real difference between passing around seeds or the resulting keys. (Assuming the seeds are random, as they are in the case referenced above. If they have sensitive information like passwords, then I agree that there\u2019s a difference.)",
+          "createdAt": "2020-10-17T20:27:10Z",
+          "updatedAt": "2020-10-17T20:27:10Z"
+        }
+      ]
     },
     {
       "number": 154,
@@ -1982,15 +2026,15 @@
       "id": "MDU6SXNzdWU3MDkzMDkyMzk=",
       "title": "Wire format of HPKE context",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/161",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "cjpatton",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "The draft does not specify how the HPKE context (cipher suite, exporter secret, key, nonce, sequence number, etc.) is represented on the wire. There are use cases for HPKE in which it is desirable to transmit the context over a secure channel. For example, Cloudflare's prototype implementation of the Encrypted ClientHello (ECH) extension for TLS will offload KEM operations to an RPC server (https://github.com/cloudflare/go/pull/30).\r\n\r\nI'm not requesting a change to the spec at this point ... I just wanted to bring up the use case and ask what people think. I'm not sure, but it might make sense to standardize the encoding. One proposal is here: https://github.com/cisco/go-hpke/blob/master/hpke.go#L197. In addition to the above parameters, this format encodes the \"role\" of the context's user, i.e., whether they are the sender or receiver.",
       "createdAt": "2020-09-25T22:02:27Z",
-      "updatedAt": "2020-09-29T15:40:57Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-17T15:38:17Z",
+      "closedAt": "2020-10-17T15:38:17Z",
       "comments": [
         {
           "author": "Lekensteyn",
@@ -2005,6 +2049,13 @@
           "body": "I'm fine with that resolution.",
           "createdAt": "2020-09-29T15:40:56Z",
           "updatedAt": "2020-09-29T15:40:56Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm fine with that resolution, too. Given this hasn't been requested until now, and how far along we are in the process, I'm closing this.",
+          "createdAt": "2020-10-17T15:38:17Z",
+          "updatedAt": "2020-10-17T15:38:17Z"
         }
       ]
     }
@@ -11212,13 +11263,13 @@
       "labels": [],
       "body": "This is work in progress and addresses #84 \u201cGuidance for future KEMs\u201d.\r\n\r\nNotes on public key length:\r\n- It seems that in SIKE, the uncompressed public key length is fixed, and [the compressed size is also fixed](https://hyp.is/-Ks_uMB1EeqREaPjYYE8nQ/eprint.iacr.org/2020/431.pdf), but smaller. I did not check all the NIST candidates so see if others do something similar. Especially I did not look if someone does variable size public keys, like, an entire range of sizes. Do you think we need to accommodate for this more explicitly? I made a small note down in `IANA Considerations/KEM Identifiers`.\r\n- In SIKE, Encaps and Decaps always take uncompressed public keys as inputs, so the caller is supposed to do the decompression, if necessary.\r\n- We do already say explicitly that for P256, P384, P521, HPKE uses **un**compressed public key encoding. I guess that is due to the current of implementations? It seems for post-quantum KEMs it is interesting to leave both possibilities open, uncompressed and compressed, because some devices might not have the computation power to do (de)compression.\r\n\r\nNotes on security requirements:\r\n- I removed the explicit requirement that `enc`, `pkR`, `pkS` must be included into the context of the KEM's key derivation. What we need is IND-CCA2 security, and if a KEM has that without these in the context, that is completely fine.\r\n\r\nDONE:\r\n- see if RSA fits into this already, as mentioned in #84.\r\n- I did not yet look at the \u201crelationship between the private key and the public key\u201d as mentioned in #84.\r\n\r\nTODO\r\n- See if any NIST candidates have different encodings for KEM ciphertexts\r\n- Do the proofs for the new security notions and update the text accordingly.\r\n- use these new notions in the main Security Considerations text?\r\n\r\nFeedback welcome especially on:\r\n- is it good to make `OPTIONAL` all-caps for GenerateKeyPair, DeriveKeyPair, AuthEncap, AuthDecap?\r\n- different public key sizes: do you think the formulations work?\r\n- It occurred to me that KEM ciphertexts might as well also have different encodings. I did not check yet if any of the NIST candidates do (this is a lot of reading work)",
       "createdAt": "2020-07-07T19:36:28Z",
-      "updatedAt": "2020-07-16T14:15:56Z",
+      "updatedAt": "2020-10-18T17:48:04Z",
       "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
       "baseRefName": "master",
-      "baseRefOid": "372b02c3dd8fbc46c01d66ac661b6eba0d4e4311",
+      "baseRefOid": "bc851fc335f75f14beab7a58fe6ade9a652d8d4f",
       "headRepository": "blipp/draft-irtf-cfrg-hpke",
       "headRefName": "blipp_kem_guidance",
-      "headRefOid": "d39bacbe21387ddb4f1391c2257766a845bd136d",
+      "headRefOid": "2cd0b8d75092bee07d032b5657819c1a8c34fa35",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -11251,6 +11302,13 @@
           "body": "> New draft which formulates a bit more careful the security requirements on a KEM: if there is a proof of the full HPKE with the new KEM, then that is fine, and we do not require any particular proofs on the KEM; we only indicate that if the KEM satisfies some security notion, then the existing compositions results provide some indication that this is fine for the entire HPKE, then.\r\n\r\nThanks! I think this is a fine way to capture the requirements. ",
           "createdAt": "2020-07-13T15:00:16Z",
           "updatedAt": "2020-07-13T15:00:16Z"
+        },
+        {
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "body": "On the particular point of variable-size keys: We should stick to fixed size here.  If we change, then we'll need proper injective encodings as opposed to just concatenating fixed-length things. And as long as there's a max size, the KEM-specific code in an HPKE implementation can always pad out to that size.",
+          "createdAt": "2020-10-18T17:48:04Z",
+          "updatedAt": "2020-10-18T17:48:04Z"
         }
       ],
       "reviews": [
@@ -11270,43 +11328,43 @@
               "originalPosition": 9,
               "body": "This seems like an implementation detail, so I'd remove it.",
               "createdAt": "2020-07-08T12:30:52Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 28,
               "body": "Hmm, this seems mandatory since it's used in Encap, no? Is the idea that future Encaps might not have a key generation function? If not, how would keys, well, be generated?",
               "createdAt": "2020-07-08T12:31:49Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 181,
               "body": "I'm not sure Insider-CCA-secure and insider-Auth-secure are common terms. We should probably define them.",
               "createdAt": "2020-07-08T12:41:22Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 205,
               "body": "Maybe this should be the maximum length of an encapsulated key? The text below (suggesting that there are different lengths that need to be specified) seems odd. Really this value is in place to help with allocations and whatnot, right?",
               "createdAt": "2020-07-08T12:42:58Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 209,
               "body": "Same suggestion here for maximum length.",
               "createdAt": "2020-07-08T12:43:09Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 124,
               "body": "\ud83d\udc4d ",
               "createdAt": "2020-07-08T12:43:26Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 35,
               "body": "Using a single constant to refer to multiple values seems error prone. Can we avoid this?",
               "createdAt": "2020-07-08T12:44:35Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11326,7 +11384,7 @@
               "originalPosition": 82,
               "body": "```suggestion\r\nSince an encapsulated key is a Diffie-Hellman public key in this KEM algorithm,\r\n`SerializePublicKey` and `SerializeCiphertext` are equivalent (`Npk` = `Nenc`).\r\nThus, we implement both using a single function called `Serialize`. `Deserialize`\r\nis implemented similarly.\r\n```",
               "createdAt": "2020-07-08T12:51:14Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11346,7 +11404,7 @@
               "originalPosition": 9,
               "body": "I added this because #84 mentioned that for example RSA does not have this clear of a relation between public key and secret key; at least computing the public key from the secret key involves a lot of computation in RSA. We could mention it elsewhere in the document? Maybe just move the new text to the Future KEMs section?",
               "createdAt": "2020-07-08T12:51:17Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11366,7 +11424,7 @@
               "originalPosition": 39,
               "body": "Should we this `SerializeEncapsulatedKey`, rather than ciphertext? (That would align better with the KEM vocabulary, I think.)",
               "createdAt": "2020-07-08T12:51:46Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11386,7 +11444,7 @@
               "originalPosition": 28,
               "body": "For DHKEM it is mandatory because it is used in Encap/Decap as you say. Other KEMs, and RSA for example, do not use it in Encap. For these KEMs, the HPKE implementation can receive the keys from outside (the higher-level application). The keys would then also be assumed to be generated by the application. The RFCs mentioning RSA KEMs https://tools.ietf.org/html/rfc5990 and https://tools.ietf.org/html/rfc8017 for example do not mention key generation at all.",
               "createdAt": "2020-07-08T12:55:54Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11406,7 +11464,7 @@
               "originalPosition": 181,
               "body": "Yes, we should define them somehow. Similar notions have been around in Signcryption literature for a while, but it is true that they are not so commen, and also the notions I am working on with the others are a bit different. Should we define them in an appendix?",
               "createdAt": "2020-07-08T12:57:39Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11426,7 +11484,7 @@
               "originalPosition": 28,
               "body": "Having said that, I agree that saying `OPTIONAL` if the DHKEMs defined in the document definitely require it, is odd. We could write optional in lowercase, or don't mention it in the Cryptographic Dependencies section at all and only leave the explanation in the Future KEMs section. Do you have a preference?",
               "createdAt": "2020-07-08T13:01:33Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11446,7 +11504,7 @@
               "originalPosition": 39,
               "body": ":+1: ",
               "createdAt": "2020-07-08T13:03:15Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11466,7 +11524,7 @@
               "originalPosition": 205,
               "body": "I like your idea of the maximum length. For the NIST P-curves, the deserialize algorithm is actually specified this way: it takes up to the maximum length, and a condition inside decides if decompression is done, depending on the actually received size.",
               "createdAt": "2020-07-08T13:06:27Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11486,7 +11544,7 @@
               "originalPosition": 82,
               "body": ":+1: ",
               "createdAt": "2020-07-08T13:07:15Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11506,7 +11564,7 @@
               "originalPosition": 9,
               "body": "Moved to Future KEMs for now.",
               "createdAt": "2020-07-08T15:16:55Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11526,7 +11584,7 @@
               "originalPosition": 28,
               "body": "I reverted all my changes related to making these functions optional, because:\r\n- For GenerateKeyPair, any KEM (and RSA too) can just write something like \u201cGenerateKeyPair is defined as in [reference]\u201d and fullfil the requirement easily like this.\r\n- DeriveKeyPair(ikm): here, I see two possibilities:\r\n  * any KEM (and also RSA) could just pass a complete keypair `sk, pk` to the function and let the function be the identity function\r\n  * any KEM (and also RSA) could pass whatever encoding of a complete keypair to the function and let the function be the deserialization of this encoding.\r\n\r\nDo we need to mention this in the document?",
               "createdAt": "2020-07-08T15:22:30Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11546,7 +11604,7 @@
               "originalPosition": 181,
               "body": "Eh... maybe? Or inline here?",
               "createdAt": "2020-07-08T15:53:54Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11566,7 +11624,7 @@
               "originalPosition": 9,
               "body": "\ud83d\udc4d ",
               "createdAt": "2020-07-08T15:54:08Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11586,7 +11644,7 @@
               "originalPosition": 28,
               "body": "I don't think it's necessary. Thanks!",
               "createdAt": "2020-07-08T15:54:48Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11606,31 +11664,31 @@
               "originalPosition": 191,
               "body": "This feels out of place in this section. Perhaps this should go underneath the KEM interface description? (That is, right below the list of functions.)",
               "createdAt": "2020-07-11T12:26:19Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 229,
               "body": "To clarify: does DHKEM achieve this notion?",
               "createdAt": "2020-07-11T12:27:40Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 230,
               "body": "I might remove this. I can't see a case where KCI resistance would not be desirable.",
               "createdAt": "2020-07-11T12:28:23Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 99,
               "body": "Some of these list items have a terminating period, and others don't. Can we add periods to all list items (here and above)?",
               "createdAt": "2020-07-11T12:29:46Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 19,
               "body": "I'm dubious about referencing signcryption... as I understand it, this is far more nascent than the other foundational work we cite.",
               "createdAt": "2020-07-11T12:31:56Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11663,7 +11721,7 @@
               "originalPosition": 229,
               "body": "DHKEM is not \u201cmulti-user insider strongly unforgeable (sUF-CMA-secure)\u201d because of KCI.",
               "createdAt": "2020-07-11T15:15:41Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11683,7 +11741,7 @@
               "originalPosition": 230,
               "body": "True, but at the same time, DHKEM is not resistant against KCI and thus falls into this category (that's why I added this sentence).",
               "createdAt": "2020-07-11T15:15:45Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11703,7 +11761,7 @@
               "originalPosition": 19,
               "body": "It is right that it there is a lot of movement in the field of signcryption. That is part of the reason why notions adapted to HPKE are in the works. I'll inline the notions, then we see if this looks alright.",
               "createdAt": "2020-07-11T15:15:48Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11723,7 +11781,7 @@
               "originalPosition": 230,
               "body": "Doh, right, yes. Thanks!",
               "createdAt": "2020-07-13T14:57:39Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11743,37 +11801,37 @@
               "originalPosition": 59,
               "body": "It seems like we can take a simpler approach here.  The only things **required by this document** are: `SerializePublicKey`, `Encap`, and `Decap`.  `Encap` is already supposed to produce a fixed-length encapsulated value, and `Decap` to consume it, so there is no need for separate serialization.  `DeserializePublickey` should just be deleted, since it's not used in this document.",
               "createdAt": "2020-07-15T17:53:09Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 88,
               "body": "Disagree with this change.  Making these values \"maximum\" implies that the fields they describe are variable-length, but `SerializePublicKey` and `Encap` both produce fixed-size values.  \r\n\r\nIf we do in fact need to have variable-length values, that will complicate encoding, so it would be preferable to keep things fixed.",
               "createdAt": "2020-07-15T17:55:17Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 124,
               "body": "This might depend on implementation details as well.",
               "createdAt": "2020-07-15T17:56:19Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 150,
               "body": "If you are going to name the errors above, name them here as well.  I would prefer to name them neither place, to be honest.",
               "createdAt": "2020-07-15T17:57:24Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 238,
               "body": "Having multiple different equivalent encodings seems like a bad idea.   Why are we accommodating this?",
               "createdAt": "2020-07-15T18:00:50Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             },
             {
               "originalPosition": 261,
               "body": "\"There are indications\" is quite vague.  What indications?\r\n\r\nOr do you mean \"the following criteria are sufficient to meet HPKE's security needs\"?",
               "createdAt": "2020-07-15T18:02:39Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11793,7 +11851,7 @@
               "originalPosition": 59,
               "body": "This change takes the complexity hit so that future documents don't need to. If we don't want this complexity, then I concur with the simplification above. (I don't think it's much complexity, so I'm OK adding it here.)",
               "createdAt": "2020-07-15T18:05:39Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11813,7 +11871,7 @@
               "originalPosition": 88,
               "body": "> Disagree with this change. Making these values \"maximum\" implies that the fields they describe are variable-length, but SerializePublicKey and Encap both produce fixed-size values.\r\n\r\nThat's correct -- they *may* be variable length for future KEMs. ",
               "createdAt": "2020-07-15T18:06:15Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11833,7 +11891,7 @@
               "originalPosition": 124,
               "body": "\ud83d\udc4d ",
               "createdAt": "2020-07-15T18:06:21Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11853,7 +11911,7 @@
               "originalPosition": 238,
               "body": "I think this is just a presentation issue. It may be the case that future KEMs output encapsulated keys with non-fixed-length. So we can either (a) require that those KEMs normalize on a fixed length, or (b) acknowledge that they may be variable length here, right?",
               "createdAt": "2020-07-15T18:26:28Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11873,7 +11931,7 @@
               "originalPosition": 261,
               "body": "Yes, it basically means \"the following criteria are sufficient to meet HPKE's security needs\". However, there is no proof yet that these criteria are actually sufficient for HPKE. Hence \u201cindications\u201d.\r\n\r\nIn Section \u201cSecurity Considerations\u201d we already have the formulation \u201cThe results from {{CS01}} provide some indication that any IND-CCA2-secure KEM will suffice here, but are not conclusive given the differences in the schemes.\u201d; that is from where I borrowed \u201cthere are indications\u201d.\r\n\r\nThese indications come from `CS01` and `SigncryptionDZ10`, as listed in the list elements.\r\n\r\nWould it be better already if we said \u201c{{CS01}} and {{SigncryptionDZ10}} provide some indications that the following criteria are sufficient to meet HPKE's security needs\u201d?",
               "createdAt": "2020-07-15T19:06:40Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11893,7 +11951,7 @@
               "originalPosition": 59,
               "body": "I like the simpler approach. I was not happy about the clutter I introduced with the other (De)Serialize functions.",
               "createdAt": "2020-07-16T13:42:20Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11913,7 +11971,7 @@
               "originalPosition": 59,
               "body": "Also, while it has been pointed out to us that there is a post-quantum KEM that provides different encodings for public keys, nobody told us about a KEM with different encodings for encapsulated keys, so this was just an idea that theoretically this could be the case. I did not have time yet to look at all the post-quantum KEM proposals.\r\n\r\nAnyway, all this to say that I am fine with dropping this explicit definitions.",
               "createdAt": "2020-07-16T13:49:56Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11933,7 +11991,7 @@
               "originalPosition": 150,
               "body": "The above error names vanished now except the errors from Seal and Open. Do you want to remove those names as well? We are using them in the pseudo code, so I guess not?",
               "createdAt": "2020-07-16T14:04:25Z",
-              "updatedAt": "2020-07-16T14:08:25Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11953,7 +12011,7 @@
               "originalPosition": 238,
               "body": "We are accommodating this because of this review comment we got (https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/84):\r\n\r\n```\r\nAssumptions about the length of the public key. It may not always be a\r\nfixed value, \"Npk\", for a KEM with a given set of parameters. The other\r\n(and unrelated) \"hybrid\" draft, draft-ietf-tls-hybrid-design, Section 3.2,\r\nmakes accommodation for public keys associated with a given set of\r\nparameters to vary in size.\r\n```\r\n\r\nHere is a quote from Section 3.2 from https://tools.ietf.org/html/draft-ietf-tls-hybrid-design-00\r\n```\r\nfor example, the SIKE key encapsulation mechanism permits\r\ncompressed or uncompressed public keys at each security level, and\r\nthe compressed and uncompressed formats are interoperable.\r\n```",
               "createdAt": "2020-07-16T14:13:34Z",
-              "updatedAt": "2020-07-16T14:13:35Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
             }
           ]
         },
@@ -11973,7 +12031,121 @@
               "originalPosition": 238,
               "body": "I have no strong opinion on if we should require that those KEMs normalize on a fixed length or if we should just acknowledge the variable lengths. It might be beneficial to leave more freedom to future KEMs. I agree though that the current \u201cmaximum length\u201d formulations seem a bit messy.",
               "createdAt": "2020-07-16T14:15:55Z",
-              "updatedAt": "2020-07-16T14:15:56Z"
+              "updatedAt": "2020-10-06T08:38:09Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTAyMzM1MjY1",
+          "commit": {
+            "abbreviatedOid": "d335edc"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-10-05T18:59:00Z",
+          "updatedAt": "2020-10-05T18:59:00Z",
+          "comments": [
+            {
+              "originalPosition": 224,
+              "body": "Signing only the KEM ciphertext would not solve the problem pointed out by the generic attack from ABHKLR20.",
+              "createdAt": "2020-10-05T18:59:00Z",
+              "updatedAt": "2020-10-06T08:38:09Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTAyMzM3NzYy",
+          "commit": {
+            "abbreviatedOid": "d335edc"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-10-05T19:02:22Z",
+          "updatedAt": "2020-10-05T19:02:22Z",
+          "comments": [
+            {
+              "originalPosition": 203,
+              "body": "I removed this, because IND-CCA2 is not well-defined for the authenticated modes. ABHKLR20 uses different names (Outsider-CCA and Insider-CCA), so we could add them here, but there is no security notions for the PSK yet.",
+              "createdAt": "2020-10-05T19:02:22Z",
+              "updatedAt": "2020-10-06T08:38:09Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTEwOTkxMjk2",
+          "commit": {
+            "abbreviatedOid": "2cd0b8d"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Thanks again, @blipp! I think this looks good. \r\n\r\n@bifurcation, please review so we can land this before 06.",
+          "createdAt": "2020-10-17T14:53:18Z",
+          "updatedAt": "2020-10-17T15:09:35Z",
+          "comments": [
+            {
+              "originalPosition": 188,
+              "body": "```suggestion\r\nAuth and AuthPSK modes are supported.\r\n```",
+              "createdAt": "2020-10-17T14:53:18Z",
+              "updatedAt": "2020-10-17T15:09:35Z"
+            },
+            {
+              "originalPosition": 192,
+              "body": "```suggestion\r\ncase `Npk` MUST indicate the maximum output length for any such encoding. It is left to the\r\n```",
+              "createdAt": "2020-10-17T14:53:38Z",
+              "updatedAt": "2020-10-17T15:09:35Z"
+            },
+            {
+              "originalPosition": 218,
+              "body": "```suggestion\r\nThe DHKEM variants defined in this document are\r\n```",
+              "createdAt": "2020-10-17T14:56:03Z",
+              "updatedAt": "2020-10-17T15:09:35Z"
+            },
+            {
+              "originalPosition": 233,
+              "body": "```suggestion\r\nAs shown by {{ABHKLR20}}, key-compromise impersonation attacks are possible\r\nbecause KEM ciphertexts are not bound to HPKE messages. An adversary who \r\nknows a recipients private key, can decapsulate an observed KEM ciphertext, \r\ncompute the key schedule, and encrypt an arbitrary message that the recipient \r\nwill accept as coming from the original sender. Importantly, this is possible even \r\nwith a KEM that is resistant to key-compromise impersonation attacks. As a\r\nresult, mitigating this issue requires fundamental changes that are out-of-scope \r\nof this specification.\r\n```",
+              "createdAt": "2020-10-17T14:58:43Z",
+              "updatedAt": "2020-10-17T15:09:35Z"
+            },
+            {
+              "originalPosition": 242,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2020-10-17T14:59:23Z",
+              "updatedAt": "2020-10-17T15:09:35Z"
+            },
+            {
+              "originalPosition": 239,
+              "body": "Can we be more precise here? What specifically is \"HPKE message\"? Is it the tuple (enc, ciphertext), where ciphertext is application data encrypted under the HPKE-derived key?",
+              "createdAt": "2020-10-17T15:00:53Z",
+              "updatedAt": "2020-10-17T15:09:35Z"
+            },
+            {
+              "originalPosition": 316,
+              "body": "```suggestion\r\nFurther, {{ABHKLR20}} proves composition theorems, showing that HPKE's\r\n```",
+              "createdAt": "2020-10-17T15:02:28Z",
+              "updatedAt": "2020-10-17T15:09:35Z"
+            },
+            {
+              "originalPosition": 322,
+              "body": "```suggestion\r\nargument is the key, respectively. The assumption for the AEAD is\r\n```",
+              "createdAt": "2020-10-17T15:03:01Z",
+              "updatedAt": "2020-10-17T15:09:35Z"
+            },
+            {
+              "originalPosition": 358,
+              "body": "I think this much is clear!\r\n\r\n```suggestion\r\nauthenticated KEM, guarantee the post-quantum security of HPKE's Auth mode.\r\n```",
+              "createdAt": "2020-10-17T15:04:51Z",
+              "updatedAt": "2020-10-17T15:09:35Z"
+            },
+            {
+              "originalPosition": 374,
+              "body": "```suggestion\r\nThis means, for instance, that it would not be sufficient if the KEM\r\nshared secret is only uniformly random as an element of some set prior\r\nto its encoding as byte string.\r\n```",
+              "createdAt": "2020-10-17T15:05:47Z",
+              "updatedAt": "2020-10-17T15:09:35Z"
             }
           ]
         }
@@ -12585,7 +12757,7 @@
       "labels": [],
       "body": "**Summary**:\r\n\r\nWhile working on formal composition proofs for HPKE, a problem for applicability of the proofs in a post-quantum setting came up. Here, composition proof means a proof of HPKE assuming some general abstracted KEM.\r\n\r\nThis pull requests proposes a small change to the `KeySchedule` which resolves this proof issue and at the same time simplifies KeySchedule by removing one call to LabeledExtract. After the change, the protocol would be cryptographically cleaner, and also a tiny bit faster, and one line less to implement.\r\n\r\n**Rationale**:\r\n\r\nCurrently, the `KeySchedule` contains the following computation:\r\n\r\n```\r\nsecret = LabeledExtract(psk_hash, \"secret\", shared_secret)\r\n```\r\n\r\nFrequently, HKDF-Extract is modeled as a random oracle. However, we would like to avoid using the random oracle model in the remainder of HPKE (a.k.a. the DEM part/the non-KEM part) and instead use a standard model assumption like PRF. Then, the composition proof will much more likely stay valid in a quantum setting: someone proving once-and-for-all that some PRF is post-quantum secure seems much easier than specifically re-analyzing HPKE in a quantum random oracle model. (papers like [On Quantum Indifferentiability](https://eprint.iacr.org/2018/257.pdf) suggest that quantum random oracles are a real headache.)\r\n\r\nAs a first guess, we would like to model the Extract call as a PRF, with its second parameter `shared_secret` being the key. However, LabeledExtract prefixes `shared_secret` with some labels, let's recall the definition:\r\n\r\n```\r\ndef LabeledExtract(salt, label, ikm):\r\n  labeled_ikm = concat(\"HPKE-05 \", suite_id, label, ikm)\r\n  return Extract(salt, labeled_ikm)\r\n```\r\n\r\nThis means the value that goes into Extract as `labeled_ikm` is not from a uniformly random distribution. Thus, we cannot use a PRF assumption, because there is no uniformly random key. What's left would be a \"seedless extractor\" assumption, which only requires that there is enough entropy in the ikm. Such a seedless extractor is a pretty idealized object and thus morally very close to the random oracle assumption. Actually, the theorems justifying that HMAC is such an extractor usually use a random oracle assumption on an underlying compression function. This is unpleasant because this practically makes the HPKE composition proof rely on a random oracle assumption, which means this proof would not stay valid in a quantum setting.\r\n\r\n**The mitigation**: a mitigation would be to replace these two lines:\r\n\r\n```\r\npsk_hash = LabeledExtract(\"\", \"psk_hash\", psk)\r\nsecret = LabeledExtract(psk_hash, \"secret\", shared_secret)\r\n```\r\n\r\nby\r\n\r\n```\r\nsecret = LabeledExtract(shared_secret, \"secret\", psk)\r\n```\r\n\r\nthat resolves the issue for the proof, because: the first parameter goes directly into Extract's first parameter without prefix, and thus we could use a PRF assumption.\r\n\r\nAdditionally, we get rid of hashing `psk` to `psk_hash`:\r\n- `shared_secret` does not exceed the block size of any of the KDFs specified in the RFC (`shared_secret` is at most 64 bytes long (for SHA512), and the block size of SHA256 is 64 bytes), so we don't need the hashing step to squeeze it below the block size.\r\n- in the second parameter of Extract, there is no length restriction to `psk`\r\n\r\nThis proposed change stays a valid use case of HKDF-Extract: we want to extract the entropy from the psk, and the psk is not necessarily from a uniform distribution (as we do not require that in the draft, and it would maybe too restrictive indeed). Also, HKDF-Extract does allow to use a salt that is secret and random.\r\n\r\nFrom a more global view point: In DHKEM, we already feed the DH shared secret through a random oracle (HKDF) to achieve a uniformly random value on the bitstrings of a fixed length, so it would be cryptographically cleaner to use this property in the following (by keying a PRF with it), instead of requiring a second random oracle.",
       "createdAt": "2020-09-30T23:12:26Z",
-      "updatedAt": "2020-10-01T16:25:17Z",
+      "updatedAt": "2020-10-01T16:27:37Z",
       "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
       "baseRefName": "master",
       "baseRefOid": "24f7e3111509cd97cb83eef831117cfb370ee228",
@@ -12647,6 +12819,13 @@
           "body": "My point is that we either care about dynamic memory allocation, or we don't. I don't really see much value in making `key_schedule_context` fixed-size if we still require mallocs elsewhere. \r\n\r\nBut that said, let's just address this in a separate PR.",
           "createdAt": "2020-10-01T16:24:36Z",
           "updatedAt": "2020-10-01T16:24:36Z"
+        },
+        {
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "So this PR would change from having 3 LabeledExtract calls with dynamic memory allocation (for psk_id, info, psk) and 1 LabeledExtract call with no dynamic memory allocation, to having only 3 LabeledExtract calls but all of which are with dynamic memory allocation (for psk_id, info, psk).\r\n\r\nFor reference, it is this:\r\n```\r\n  psk_id_hash = LabeledExtract(\"\", \"psk_id_hash\", psk_id)  // dynamic\r\n  info_hash = LabeledExtract(\"\", \"info_hash\", info) // dynamic\r\n  key_schedule_context = concat(mode, psk_id_hash, info_hash) // fixed\r\n\r\n  psk_hash = LabeledExtract(\"\", \"psk_hash\", psk) // dynamic\r\n\r\n  secret = LabeledExtract(psk_hash, \"secret\", shared_secret) // fixed\r\n```\r\n\r\nvs\r\n```\r\n  psk_id_hash = LabeledExtract(\"\", \"psk_id_hash\", psk_id)  // dynamic\r\n  info_hash = LabeledExtract(\"\", \"info_hash\", info) // dynamic\r\n  key_schedule_context = concat(mode, psk_id_hash, info_hash) // fixed\r\n\r\n  secret = LabeledExtract(shared_secret, \"secret\", psk) // dynamic\r\n```\r\n\r\n\r\n> My point is that we either care about dynamic memory allocation, or we don't. I don't really see much value in making `key_schedule_context` fixed-size if we still require mallocs elsewhere.\r\n\r\nOh ok, I see \u2013 I don't have the necessary implementation experience to judge this from my side.\r\n\r\n> But that said, let's just address this in a separate PR.\r\n\r\nAgreed, thanks for merging!",
+          "createdAt": "2020-10-01T16:27:37Z",
+          "updatedAt": "2020-10-01T16:27:37Z"
         }
       ],
       "reviews": [
@@ -12674,6 +12853,48 @@
           "body": "Overall, this looks fine to me.  Just to confirm a few minor points:\r\n\r\n1. @chris-wood IIRC we had made the change to psk_hash based on some feedback that a fixed length value could be easier to handle for some implementations.  Don't know if that's still applicable.\r\n\r\n2. It's less important, but I wonder if we should revert the `psk_id_hash` and `info_hash` hashes as well.  Basically, those are trading hash invocations for `i2osp` calls and dynamic memory allocation.  (And this may be what the above-referenced review was focused on.)",
           "createdAt": "2020-10-01T14:08:30Z",
           "updatedAt": "2020-10-01T14:08:30Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 163,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA2ODU3MDAx",
+      "title": "Add missing parameter to AuthDecap",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/163",
+      "state": "MERGED",
+      "author": "uhoreg",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-10-20T14:35:43Z",
+      "updatedAt": "2020-10-21T03:03:54Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "baseRefName": "master",
+      "baseRefOid": "bc851fc335f75f14beab7a58fe6ade9a652d8d4f",
+      "headRepository": "uhoreg/draft-irtf-cfrg-hpke",
+      "headRefName": "patch-1",
+      "headRefOid": "3ecc7b36dc9294c7af07a031632b0df1875bdc50",
+      "closedAt": "2020-10-21T03:03:53Z",
+      "mergedAt": "2020-10-21T03:03:53Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "d7c239315247e59c2d563cb7c44c918552489e4a"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTEzMjczMzEw",
+          "commit": {
+            "abbreviatedOid": "3ecc7b3"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Nice catch!",
+          "createdAt": "2020-10-21T03:03:49Z",
+          "updatedAt": "2020-10-21T03:03:49Z",
           "comments": []
         }
       ]
