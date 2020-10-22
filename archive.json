@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-21T22:53:26.879094+00:00",
+  "timestamp": "2020-10-22T14:54:24.879175+00:00",
   "repo": "cfrg/draft-irtf-cfrg-hpke",
   "labels": [
     {
@@ -11270,7 +11270,7 @@
       "labels": [],
       "body": "This is work in progress and addresses #84 \u201cGuidance for future KEMs\u201d.\r\n\r\nNotes on public key length:\r\n- It seems that in SIKE, the uncompressed public key length is fixed, and [the compressed size is also fixed](https://hyp.is/-Ks_uMB1EeqREaPjYYE8nQ/eprint.iacr.org/2020/431.pdf), but smaller. I did not check all the NIST candidates so see if others do something similar. Especially I did not look if someone does variable size public keys, like, an entire range of sizes. Do you think we need to accommodate for this more explicitly? I made a small note down in `IANA Considerations/KEM Identifiers`.\r\n- In SIKE, Encaps and Decaps always take uncompressed public keys as inputs, so the caller is supposed to do the decompression, if necessary.\r\n- We do already say explicitly that for P256, P384, P521, HPKE uses **un**compressed public key encoding. I guess that is due to the current of implementations? It seems for post-quantum KEMs it is interesting to leave both possibilities open, uncompressed and compressed, because some devices might not have the computation power to do (de)compression.\r\n\r\nNotes on security requirements:\r\n- I removed the explicit requirement that `enc`, `pkR`, `pkS` must be included into the context of the KEM's key derivation. What we need is IND-CCA2 security, and if a KEM has that without these in the context, that is completely fine.\r\n\r\nDONE:\r\n- see if RSA fits into this already, as mentioned in #84.\r\n- I did not yet look at the \u201crelationship between the private key and the public key\u201d as mentioned in #84.\r\n\r\nTODO\r\n- See if any NIST candidates have different encodings for KEM ciphertexts\r\n- Do the proofs for the new security notions and update the text accordingly.\r\n- use these new notions in the main Security Considerations text?\r\n\r\nFeedback welcome especially on:\r\n- is it good to make `OPTIONAL` all-caps for GenerateKeyPair, DeriveKeyPair, AuthEncap, AuthDecap?\r\n- different public key sizes: do you think the formulations work?\r\n- It occurred to me that KEM ciphertexts might as well also have different encodings. I did not check yet if any of the NIST candidates do (this is a lot of reading work)",
       "createdAt": "2020-07-07T19:36:28Z",
-      "updatedAt": "2020-10-21T16:27:28Z",
+      "updatedAt": "2020-10-22T14:54:15Z",
       "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
       "baseRefName": "master",
       "baseRefOid": "d7c239315247e59c2d563cb7c44c918552489e4a",
@@ -11326,6 +11326,38 @@
         }
       ],
       "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE0ODExMDg0",
+          "commit": {
+            "abbreviatedOid": "45c2126"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "PENDING",
+          "body": "",
+          "createdAt": "2020-10-22T14:47:18Z",
+          "updatedAt": "2020-10-22T14:47:18Z",
+          "comments": [
+            {
+              "originalPosition": 214,
+              "body": "Should we add a column to the registry to reflect this?",
+              "createdAt": "2020-10-22T14:47:19Z",
+              "updatedAt": "2020-10-22T14:47:19Z"
+            },
+            {
+              "originalPosition": 252,
+              "body": "```suggestion\r\nknows a recipient's private key can decapsulate an observed KEM ciphertext,\r\n```",
+              "createdAt": "2020-10-22T14:47:57Z",
+              "updatedAt": "2020-10-22T14:47:57Z"
+            },
+            {
+              "originalPosition": 265,
+              "body": "Might be worth noting that this is the approach taken in MLS.",
+              "createdAt": "2020-10-22T14:54:15Z",
+              "updatedAt": "2020-10-22T14:54:15Z"
+            }
+          ]
+        },
         {
           "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDQ0NzE1Njk0",
           "commit": {
@@ -12966,6 +12998,105 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 164,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA3OTA5MDM1",
+      "title": "Prepare final changes for RGLC.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/164",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #152, #144, #146, #143, #141.\r\n\r\nI'll update the test vectors (and address #154 and #147) in a followup PR. \r\n\r\ncc @cjpatton (for the IV change), @davidben, @blipp, @rozbb, @fredericjacobs, @kjacobs-moz",
+      "createdAt": "2020-10-21T22:56:15Z",
+      "updatedAt": "2020-10-22T14:53:26Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "baseRefName": "master",
+      "baseRefOid": "d7c239315247e59c2d563cb7c44c918552489e4a",
+      "headRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "headRefName": "caw/rglc-prep",
+      "headRefOid": "0fba03d9f53089236ca582ba11fd9f548d29de8f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE0MzIwMzMw",
+          "commit": {
+            "abbreviatedOid": "66c5236"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2020-10-22T02:41:46Z",
+          "updatedAt": "2020-10-22T14:38:20Z",
+          "comments": [
+            {
+              "originalPosition": 32,
+              "body": "I'm OK with deprecating \"nonce\", but if we're going to do it, let's be thorough. Suggest the following wording:\r\n\r\n- `base_iv` is the thing the KDF produces\r\n- `iv` is the thing that gets fed to the AEAD\r\n\r\n```suggestion\r\n  - `Niv`: The length in bytes of an initialization vector for this algorithm\r\n```\r\n\r\n(No need to distinguish between base IV and IV here, it's OK if they just happen to be the same length.)",
+              "createdAt": "2020-10-22T02:41:47Z",
+              "updatedAt": "2020-10-22T14:53:26Z"
+            },
+            {
+              "originalPosition": 154,
+              "body": "Line wrapping.\r\n\r\n```suggestion\r\n~~~~~\r\nP-256:\r\n0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551\r\n\r\nP-384: \r\n0xffffffffffffffffffffffffffffffffffffffffffffffffc7634d81f4372ddf\r\n  581a0db248b0a77aecec196accc52973\r\n\r\nP-521:\r\n0x01ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\r\n  fa51868783bf2f966b7fcc0148f709a5d03bb5c9b8899c47aebb6fb71e91386409\r\n~~~~~\r\n```",
+              "createdAt": "2020-10-22T14:35:03Z",
+              "updatedAt": "2020-10-22T14:53:26Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE0ODExMzU0",
+          "commit": {
+            "abbreviatedOid": "66c5236"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-10-22T14:47:32Z",
+          "updatedAt": "2020-10-22T14:47:33Z",
+          "comments": [
+            {
+              "originalPosition": 32,
+              "body": "I agree that we only need one length.\r\n\r\nI am less sure about removing the word \"nonce\" completely, because the AEADs we use call it nonce. Citing from the original feedback #152, it was suggested to align with TLS: \u201cin TLS 1.3 for example, the \"nonce\" is the initialization vector XORed with a sequence number.\u201d ",
+              "createdAt": "2020-10-22T14:47:32Z",
+              "updatedAt": "2020-10-22T14:53:26Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 165,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA3OTg1OTA0",
+      "title": "Implemented SerializeSk/DeserializeSk",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/165",
+      "state": "OPEN",
+      "author": "rozbb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "# Rationale\r\n\r\nI'm sorry for pushing this harder, but hear me out: this is better than the current workaround, which is making users carry the IKM they seeded their `DeriveKeyPair()` with.\r\n\r\n1. If a user literally ever uses `GenerateKeyPair()`, or uses `DeriveKeyPair()` and fails to save their IKM for any reason, they are badly and unnecessarily inconvenienced. They can continue to use their secret key for as long as their program runs, but they have no way to save the state of their own program.\r\n2. Ok, maybe a library anticipates this and decides to carry the IKM along with the secret key, or maybe it decides to expose some serialize/deserialize functionality that's compatible with everyone else using that library. Then great for that library! But should have something that _all_ libraries are guaranteed to do.\r\n3. This functionality is already implemented and exposed by `go-hpke` and `rust-hpke`, minus some validation checks.\r\n\r\nTo reiterate a point in 1, because I think it's a weird consequence of the current API: **if you use `GenerateKeyPair()`, you have no way to save your keypair.**\r\n\r\n# Specifics\r\n\r\n* I changed \"secret key\" to \"private key\" for consistency and because the latter is by far the more common term\r\n* I made the `SerializeSk()` routines canonicalize their outputs because 1. it's easy, and 2. users might have some unfounded expectations about equality of secret keys (\"I'll just check if this secret key is in my local database by doing a bytestring equality test\"). Canonicalizing makes these expectations true.\r\n* Aside for the purpose of canonicalization, I made the P-curve privkey serialization routine do a reduction mod `order` because SECG explicitly assumes that the secret key is an integer in the range `[0, order-1]`, but the HPKE spec makes no such assertion about P-curve privkeys\r\n* I made 0 an invalid secret key because there's literally no valid way to use a 0 secret key. Any DH op you do will produce the point at infinity, which MUST be treated as an error. So we may as well catch it as early as possible for easier debugging",
+      "createdAt": "2020-10-22T03:25:27Z",
+      "updatedAt": "2020-10-22T03:25:27Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "baseRefName": "master",
+      "baseRefOid": "d7c239315247e59c2d563cb7c44c918552489e4a",
+      "headRepository": "rozbb/draft-irtf-cfrg-hpke",
+      "headRefName": "serializesk",
+      "headRefOid": "ac3b323e68d5aa29a9a8fc1dd3f343919a009bb9",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
