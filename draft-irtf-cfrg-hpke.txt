@@ -88,8 +88,8 @@ Table of Contents
      6.2.  Secret Export . . . . . . . . . . . . . . . . . . . . . .  19
    7.  Algorithm Identifiers . . . . . . . . . . . . . . . . . . . .  20
      7.1.  Key Encapsulation Mechanisms (KEMs) . . . . . . . . . . .  20
-       7.1.1.  Serialize and Deserialize . . . . . . . . . . . . . .  21
-       7.1.2.  SerializePrivateKey/DeserializePrivateKey . . . . . .  21
+       7.1.1.  SerializePublicKey and DeserializePublicKey . . . . .  21
+       7.1.2.  SerializePrivateKey and DeserializePrivateKey . . . .  21
        7.1.3.  DeriveKeyPair . . . . . . . . . . . . . . . . . . . .  21
        7.1.4.  Validation of Inputs and Outputs  . . . . . . . . . .  23
        7.1.5.  Future KEMs . . . . . . . . . . . . . . . . . . . . .  23
@@ -1122,7 +1122,7 @@ Barnes, et al.            Expires 26 April 2021                [Page 20]
 Internet-Draft                    HPKE                      October 2020
 
 
-7.1.1.  Serialize and Deserialize
+7.1.1.  SerializePublicKey and DeserializePublicKey
 
    For P-256, P-384 and P-521, the "Serialize()" function of the KEM
    performs the uncompressed Elliptic-Curve-Point-to-Octet-String
@@ -1136,7 +1136,7 @@ Internet-Draft                    HPKE                      October 2020
    Some deserialized public keys MUST be validated before they can be
    used.  See Section 7.1.4 for specifics.
 
-7.1.2.  SerializePrivateKey/DeserializePrivateKey
+7.1.2.  SerializePrivateKey and DeserializePrivateKey
 
    For P-256, P-384 and P-521, the "SerializePrivateKey()" function of
    the KEM performs the Field-Element-to-Octet-String conversion
