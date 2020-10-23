@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-23T14:51:25.322608+00:00",
+  "timestamp": "2020-10-23T22:57:30.474776+00:00",
   "repo": "cfrg/draft-irtf-cfrg-hpke",
   "labels": [
     {
@@ -1609,7 +1609,7 @@
       "id": "MDU6SXNzdWU2NDAwMTY2MjY=",
       "title": "Reference 2006/265",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/115",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -1618,8 +1618,8 @@
       ],
       "body": "[The paper](https://eprint.iacr.org/2006/265.pdf) presents conditions for secure KEM/DEM constructions. We should absolutely cite it as related work.",
       "createdAt": "2020-06-16T22:38:31Z",
-      "updatedAt": "2020-10-21T16:28:17Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-23T18:06:00Z",
+      "closedAt": "2020-10-23T18:06:00Z",
       "comments": [
         {
           "author": "chris-wood",
@@ -1634,6 +1634,13 @@
           "body": "I just suggested a citation in pull request https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/131",
           "createdAt": "2020-10-21T16:28:17Z",
           "updatedAt": "2020-10-21T16:28:17Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Yep, that works! Closing for now.",
+          "createdAt": "2020-10-23T18:06:00Z",
+          "updatedAt": "2020-10-23T18:06:00Z"
         }
       ]
     },
@@ -1731,15 +1738,15 @@
       "id": "MDU6SXNzdWU2Nzk1NzcyNDM=",
       "title": "List the NIST curve orders inline",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/141",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "The text (for DeriveKeyPair) is currently ambiguous. Let's just include the orders for each curve, which would be the following:\r\n\r\n- P256: 0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551\r\n- P384: 0xffffffffffffffffffffffffffffffffffffffffffffffffc7634d81f4372ddf581a0db248b0a77aecec196accc52973\r\n- P521: 0x01fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa51868783bf2f966b7fcc0148f709a5d03bb5c9b8899c47aebb6fb71e91386409",
       "createdAt": "2020-08-15T13:42:55Z",
-      "updatedAt": "2020-08-15T13:42:55Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-23T18:05:42Z",
+      "closedAt": "2020-10-23T18:05:42Z",
       "comments": []
     },
     {
@@ -1785,15 +1792,15 @@
       "id": "MDU6SXNzdWU2Nzk1Nzc5MTE=",
       "title": "Remove superfluous space after \"HPKE-05\" in constant labels",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/143",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This was raised by Stephen [on the list](https://mailarchive.ietf.org/arch/msg/cfrg/7zhOHPFkCyZC00xLZnsEBT3o6ZU/).",
       "createdAt": "2020-08-15T13:48:07Z",
-      "updatedAt": "2020-08-24T13:48:28Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-23T18:05:37Z",
+      "closedAt": "2020-10-23T18:05:37Z",
       "comments": [
         {
           "author": "blipp",
@@ -1809,15 +1816,15 @@
       "id": "MDU6SXNzdWU2Nzk1NzkwMDk=",
       "title": "Address Stephen's nits",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/144",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "From [his feedback on the list](https://mailarchive.ietf.org/arch/msg/cfrg/7zhOHPFkCyZC00xLZnsEBT3o6ZU/):\r\n\r\n1. p4: PGP and fiveG don't depend on HPKE, whereas msl and esni do. Maybe worth saying that.\r\n2. p5: I2OSP and OS2IP aren't expanded here - be no harm to do so\r\n3. p6: Open as the opposite of Seal, doesn't seem like the best choice - there are too many functions called open() in too many contexts. Unseal would be better IMO.\r\n4. p5: DeriveKeyPair was added after discussion in github (and maybe on the MLS list) but I don't recall any disussion of that on the CFRG list at all. Was there any? Adding this seems fine to me if MLS wants it and the definition is also almost fine (see above) so this is just a process nit.\r\n5. p5 & elsewhere: \"fixed-length\" is used in various places where it's not quite true - the various lengths are fixed only after you pick a ciphersuite - so people's code has to support different sizes (if they support >1 suite)\r\n\r\nMy take on each of these is:\r\n\r\n1. We can clarify this.\r\n2. These seem fairly common in folded form and are quite a mouthful when expanded, so I'm inclined to keep these as is.\r\n3. Open and seal seem fairly common, at least in APIs I'm familiar with (BoringSSL/OpenSSL, libsodium, NaCL, etc), so I'm inclined to keep this as is.\r\n4. I disagree about this being a process nit. The document is still an active RG document, so everything is subject to change. I'm not sure why discussion would be needed before or after it lands in the document?\r\n5. Similar to other stacks I'm familiar with, I assume memory would statically allocated for each of these fixed-length values (on the stack) based on the maximum size supported. The specific ciphersuite/length would then use however much of that memory is needed. So this seems fine to keep, though perhaps clarifying might help? I'm not sure what that would look like right now, but I'll give it some thought.",
       "createdAt": "2020-08-15T13:55:50Z",
-      "updatedAt": "2020-08-24T13:56:40Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-23T18:04:48Z",
+      "closedAt": "2020-10-23T18:04:48Z",
       "comments": [
         {
           "author": "blipp",
@@ -1857,7 +1864,7 @@
       "id": "MDU6SXNzdWU2ODAyNjE2MTA=",
       "title": "suite_id length is wrong",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/146",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -1866,8 +1873,8 @@
       "labels": [],
       "body": "In 7.2.1, this should be 10, not 9, to match the length of the following byte array is 10:\r\n\r\n~~~\r\nsuite_id = concat(\r\n  \"HPKE\",\r\n  I2OSP(kem_id, 2),\r\n  I2OSP(kdf_id, 2),\r\n  I2OSP(aead_id, 2)\r\n)\r\n~~~",
       "createdAt": "2020-08-17T14:03:58Z",
-      "updatedAt": "2020-09-23T14:47:14Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-23T18:05:32Z",
+      "closedAt": "2020-10-23T18:05:32Z",
       "comments": [
         {
           "author": "blipp",
@@ -1883,7 +1890,7 @@
       "id": "MDU6SXNzdWU2ODAyNjI3MDQ=",
       "title": "Clarify seedE and seedR in test vectors",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/147",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -1892,8 +1899,8 @@
       "labels": [],
       "body": "These values are not well-defined, and they probably should be.",
       "createdAt": "2020-08-17T14:05:35Z",
-      "updatedAt": "2020-09-23T14:47:15Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-23T18:05:26Z",
+      "closedAt": "2020-10-23T18:05:26Z",
       "comments": []
     },
     {
@@ -1901,7 +1908,7 @@
       "id": "MDU6SXNzdWU2OTY3ODAxODM=",
       "title": "Address cjpatton's feedback",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/152",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -1910,8 +1917,8 @@
       "labels": [],
       "body": "Abstract                                           \r\n                                                   \r\n\"for any combination of\" -> \"for several combinations of\"\r\n                                                   \r\nSection 4                                          \r\n                                                   \r\n\"random(Nsk)\" is used but \"random()\" isn't defined yet.  \r\n                                                   \r\n\"not passed as parameter\" -> \"not passed as a parameter\" \r\n                                                   \r\nSection 5                                          \r\n                                                   \r\n\"the holder of the private key corresponding to `pkR`\" -> \"the holder of `skR`\" \r\n                                                   \r\nIn various places, e.g., 'KeySchedule()' in Section 5.1, value \"\" is used as the\r\nsalt for KDF extraction. I'm wondering if implementations might misinterpret    \r\nthis. I read \"\" as 'the empty string', but the correct interpretation might be  \r\n'nil', i.e., 'None' in Python or 'NULL' in C. The HKDF spec defines the salt as \r\nfollows: 'optional salt value (a non-secret random value); if not provided, it  \r\nis set to a string of HashLen zeros.' I think the intention is to interpret \"\"  \r\nas 'nil', i.e., no salt, but the empty string is certainly a valid salt for\r\nHKDF, since the extraction function is well-defined on this input. A 0-length\r\nsalt might not be safe choice in terms of security, however.\r\n                                                   \r\nSection 5.2                                        \r\n                                                   \r\nI think the HPKE uses the term \"nonce\" incorrectly, since it's not a \"Number\r\nthat's used ONCE\". In fact, it's used every time the \"Seal()\" or \"Open()\"\r\noperation is run. What's called a \"nonce\" here is usually called the\r\n\"initialization vector\" elsewhere: in TLS 1.3 for example, the \"nonce\" is the\r\ninitialization vector XORed with a sequence number.    \r\n\r\n(Edit: from the list, consider renaming this to \"iv\")",
       "createdAt": "2020-09-09T12:40:54Z",
-      "updatedAt": "2020-09-23T14:47:15Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-23T18:04:07Z",
+      "closedAt": "2020-10-23T18:04:07Z",
       "comments": [
         {
           "author": "rozbb",
@@ -1927,15 +1934,15 @@
       "id": "MDU6SXNzdWU2OTk4MzAwMDQ=",
       "title": "No official byte representation of private keys",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/153",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "rozbb",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Currently, there is no `Serialize/Deserialize` function defined for KEM private keys. The primary reason someone might want this is if they were migrating from one HPKE library to another, and wanted to keep their long-term private keys the same. Currently, a user would have to dig into both implementations to find their internal representation and figure out how to convert between the two manually. The fact that go-hpke and rust-hpke have (I think) the same byte representation of secret keys is good, but it would be better if this were guaranteed by the spec.\r\n\r\nI propose `SerializeSk/DeserializeSk` functions (not married to those names) that do what you'd expect, with the small addition that `DeserializeSk` should reject secret keys that are equivalent to 0.\r\n\r\n**Addendum**\r\n\r\nI also think that `SerializeSk` should canonicalize secret keys. For P-curves, this would mean reducing modulo the curve order, and for X25519/X448 this would mean clamping the keys.\r\n\r\nThe reason I think we should do this is because users might want to save their secret keys using some storage mechanism of their choosing. They might have some expectations of secret key identity (e.g., as a key in a table or an item in a set), and it would be a lot more effort to scream \"equivalent keys are not identical!\" all across our docs than to just make sure that equivalent keys actually are identical.",
       "createdAt": "2020-09-11T22:50:31Z",
-      "updatedAt": "2020-10-17T20:27:10Z",
-      "closedAt": null,
+      "updatedAt": "2020-10-23T18:04:38Z",
+      "closedAt": "2020-10-23T18:04:38Z",
       "comments": [
         {
           "author": "chris-wood",
@@ -1957,6 +1964,13 @@
           "body": "I don\u2019t disagree with the overall ask to standardize private key serialization, but I do disagree with the general claim that using the seed is hostile. Since one can always derive the key from the seed, there\u2019s no real difference between passing around seeds or the resulting keys. (Assuming the seeds are random, as they are in the case referenced above. If they have sensitive information like passwords, then I agree that there\u2019s a difference.)",
           "createdAt": "2020-10-17T20:27:10Z",
           "updatedAt": "2020-10-17T20:27:10Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixed in #165.",
+          "createdAt": "2020-10-23T18:04:38Z",
+          "updatedAt": "2020-10-23T18:04:38Z"
         }
       ]
     },
@@ -13048,24 +13062,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTA3OTA5MDM1",
       "title": "Prepare final changes for RGLC.",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/164",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Closes #152, #144, #146, #143, #141.\r\n\r\nI'll update the test vectors (and address #154 and #147) in a followup PR. \r\n\r\ncc @cjpatton (for the IV change), @davidben, @blipp, @rozbb, @fredericjacobs, @kjacobs-moz",
       "createdAt": "2020-10-21T22:56:15Z",
-      "updatedAt": "2020-10-23T04:09:12Z",
+      "updatedAt": "2020-10-23T18:04:08Z",
       "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
       "baseRefName": "master",
       "baseRefOid": "d7c239315247e59c2d563cb7c44c918552489e4a",
       "headRepository": "cfrg/draft-irtf-cfrg-hpke",
       "headRefName": "caw/rglc-prep",
       "headRefOid": "ea70e9f7351e65d8e41dda1fb906a0719a8239bf",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2020-10-23T18:04:08Z",
+      "mergedAt": "2020-10-23T18:04:07Z",
+      "mergedBy": "bifurcation",
+      "mergeCommit": {
+        "oid": "c05b7bada5aef346b3c2d77c0c24d0c024b16480"
+      },
       "comments": [],
       "reviews": [
         {
@@ -13153,6 +13169,39 @@
               "updatedAt": "2020-10-23T04:09:12Z"
             }
           ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE1NzQ1MzA2",
+          "commit": {
+            "abbreviatedOid": "ea70e9f"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-10-23T14:55:12Z",
+          "updatedAt": "2020-10-23T14:55:13Z",
+          "comments": [
+            {
+              "originalPosition": 160,
+              "body": "I think it's fine to keep them here (for now). We can move them around if needed as a future editorial nit.",
+              "createdAt": "2020-10-23T14:55:12Z",
+              "updatedAt": "2020-10-23T14:55:13Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE1ODkxNjI0",
+          "commit": {
+            "abbreviatedOid": "ea70e9f"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-10-23T18:03:56Z",
+          "updatedAt": "2020-10-23T18:03:56Z",
+          "comments": []
         }
       ]
     },
@@ -13161,24 +13210,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTA3OTg1OTA0",
       "title": "Implemented SerializeSk/DeserializeSk",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/165",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "rozbb",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "# Rationale\r\n\r\nI'm sorry for pushing this harder, but hear me out: this is better than the current workaround, which is making users carry the IKM they seeded their `DeriveKeyPair()` with.\r\n\r\n1. If a user literally ever uses `GenerateKeyPair()`, or uses `DeriveKeyPair()` and fails to save their IKM for any reason, they are badly and unnecessarily inconvenienced. They can continue to use their secret key for as long as their program runs, but they have no way to save the state of their own program.\r\n2. Ok, maybe a library anticipates this and decides to carry the IKM along with the secret key, or maybe it decides to expose some serialize/deserialize functionality that's compatible with everyone else using that library. Then great for that library! But should have something that _all_ libraries are guaranteed to do.\r\n3. This functionality is already implemented and exposed by `go-hpke` and `rust-hpke`, minus some validation checks.\r\n\r\nTo reiterate a point in 1, because I think it's a weird consequence of the current API: **if you use `GenerateKeyPair()`, you have no way to save your keypair.**\r\n\r\n# Specifics\r\n\r\n* I changed \"secret key\" to \"private key\" for consistency and because the latter is by far the more common term\r\n* I made the `SerializeSk()` routines canonicalize their outputs because 1. it's easy, and 2. users might have some unfounded expectations about equality of secret keys (\"I'll just check if this secret key is in my local database by doing a bytestring equality test\"). Canonicalizing makes these expectations true.\r\n* Aside for the purpose of canonicalization, I made the P-curve privkey serialization routine do a reduction mod `order` because SECG explicitly assumes that the secret key is an integer in the range `[0, order-1]`, but the HPKE spec makes no such assertion about P-curve privkeys\r\n* I made 0 an invalid secret key because there's literally no valid way to use a 0 secret key. Any DH op you do will produce the point at infinity, which MUST be treated as an error. So we may as well catch it as early as possible for easier debugging",
       "createdAt": "2020-10-22T03:25:27Z",
-      "updatedAt": "2020-10-23T14:51:18Z",
+      "updatedAt": "2020-10-23T18:02:10Z",
       "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
       "baseRefName": "master",
       "baseRefOid": "2bc1482f8c98ed698f8c8f57e4162691fc2d4d54",
       "headRepository": "rozbb/draft-irtf-cfrg-hpke",
       "headRefName": "serializesk",
-      "headRefOid": "6a0ae768fc133e6e61c615940d5d36a78607ec5a",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "8badd0ffa9c45abc91041b530017bd1b4ad6c03a",
+      "closedAt": "2020-10-23T18:02:10Z",
+      "mergedAt": "2020-10-23T18:02:10Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "9a9bdcb07dff52c64003f0635f56f379fe090e1f"
+      },
       "comments": [
         {
           "author": "chris-wood",
@@ -13193,9 +13244,98 @@
           "body": "Fixed. Should be a bit cleaner now",
           "createdAt": "2020-10-23T03:42:17Z",
           "updatedAt": "2020-10-23T03:42:17Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@rozbb I renamed the functions to align with `SerializePublicKey`. I'll tidy up the `order` references after this lands. @bifurcation, please have a look!",
+          "createdAt": "2020-10-23T15:00:23Z",
+          "updatedAt": "2020-10-23T15:00:23Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE1NzQxNjQx",
+          "commit": {
+            "abbreviatedOid": "6a0ae76"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-10-23T14:51:18Z",
+          "updatedAt": "2020-10-23T14:58:21Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\n- `SerializePrivateKey(sk)`: Produce a byte string of length `Nsk` encoding the private\r\n```",
+              "createdAt": "2020-10-23T14:51:18Z",
+              "updatedAt": "2020-10-23T14:59:37Z"
+            },
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\n- `DeserializePrivateKey(enc)`: Parse a byte string of length `Nsk` to recover a\r\n```",
+              "createdAt": "2020-10-23T14:51:25Z",
+              "updatedAt": "2020-10-23T14:59:37Z"
+            },
+            {
+              "originalPosition": 38,
+              "body": "```suggestion\r\n### SerializePrivateKey/DeserializePrivateKey {#serialize-sk}\r\n```",
+              "createdAt": "2020-10-23T14:51:52Z",
+              "updatedAt": "2020-10-23T14:59:37Z"
+            },
+            {
+              "originalPosition": 40,
+              "body": "```suggestion\r\nFor P-256, P-384 and P-521, the `SerializePrivateKey()` function of the KEM performs\r\n```",
+              "createdAt": "2020-10-23T14:52:09Z",
+              "updatedAt": "2020-10-23T14:59:37Z"
+            },
+            {
+              "originalPosition": 45,
+              "body": "```suggestion\r\nfound in section D.1.2 of {{NISTCurves}}. `DeserializePrivateKey()` performs the\r\n```",
+              "createdAt": "2020-10-23T14:52:21Z",
+              "updatedAt": "2020-10-23T14:59:37Z"
+            },
+            {
+              "originalPosition": 49,
+              "body": "```suggestion\r\nrepresentation, so little processing has to be done. The `SerializePrivateKey()`\r\n```",
+              "createdAt": "2020-10-23T14:52:29Z",
+              "updatedAt": "2020-10-23T14:59:37Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "```suggestion\r\n`DeserializePrivateKey()` function is the identity function.\r\n```",
+              "createdAt": "2020-10-23T14:52:39Z",
+              "updatedAt": "2020-10-23T14:59:37Z"
+            },
+            {
+              "originalPosition": 65,
+              "body": "```suggestion\r\nFor P-256, P-384 and P-521, `DeserializePrivateKey()` MUST check that the given integer\r\n```",
+              "createdAt": "2020-10-23T14:52:47Z",
+              "updatedAt": "2020-10-23T14:59:37Z"
+            },
+            {
+              "originalPosition": 72,
+              "body": "```suggestion\r\nFor X25519 and X448, `DeserializePrivateKey()` MUST check that the given integer, after\r\n```",
+              "createdAt": "2020-10-23T14:52:56Z",
+              "updatedAt": "2020-10-23T14:59:37Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE1ODg5ODU5",
+          "commit": {
+            "abbreviatedOid": "8badd0f"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-10-23T18:01:18Z",
+          "updatedAt": "2020-10-23T18:01:18Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 166,
@@ -13245,6 +13385,117 @@
           ]
         }
       ]
+    },
+    {
+      "number": 167,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA5MjIwNjc3",
+      "title": "Recompute input length restrictions",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/167",
+      "state": "MERGED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We reduced `size_label_rfcXXXX` by one.\r\n\r\nSince last time the limits were computed,\r\n- we changed `pskID_hash` to `psk_id_hash`, which is why the limits do not change for `info`.\r\n- `psk` is now used with label `secret` and not `psk_hash` anymore. Apparently I made an error last time, too, because I cannot explain why the limits were 89, 153 and 153. Now, I made a fresh computation using a spreadsheet and not my brain to compute sums, so it should be fine now.",
+      "createdAt": "2020-10-23T21:15:20Z",
+      "updatedAt": "2020-10-23T22:44:09Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "baseRefName": "master",
+      "baseRefOid": "c05b7bada5aef346b3c2d77c0c24d0c024b16480",
+      "headRepository": "blipp/draft-irtf-cfrg-hpke",
+      "headRefName": "blipp_input_restr",
+      "headRefOid": "b58daff40b2d7a09abac2ce10cf023e48c0b7d3e",
+      "closedAt": "2020-10-23T22:44:09Z",
+      "mergedAt": "2020-10-23T22:44:09Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "108cb6d020df307af3c90aa25b0d11125ab866a7"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 168,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA5MjQ3ODM5",
+      "title": "Weakened privkey validation requirements",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/168",
+      "state": "MERGED",
+      "author": "rozbb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Turns out checking `sk.is_zero()` in curve25519/curve448 is not always easy",
+      "createdAt": "2020-10-23T22:40:41Z",
+      "updatedAt": "2020-10-23T22:44:27Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "baseRefName": "master",
+      "baseRefOid": "c05b7bada5aef346b3c2d77c0c24d0c024b16480",
+      "headRepository": "rozbb/draft-irtf-cfrg-hpke",
+      "headRefName": "serializesk-tweaks",
+      "headRefOid": "26ddf075b9fce684df6859f0991522bce6911c49",
+      "closedAt": "2020-10-23T22:44:27Z",
+      "mergedAt": "2020-10-23T22:44:27Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "4e4f2f813a7d60a25a27b05536b5805d175c4db2"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE2MDQ2ODc1",
+          "commit": {
+            "abbreviatedOid": "26ddf07"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-10-23T22:41:35Z",
+          "updatedAt": "2020-10-23T22:41:35Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE2MDQ3MzM5",
+          "commit": {
+            "abbreviatedOid": "26ddf07"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-10-23T22:43:10Z",
+          "updatedAt": "2020-10-23T22:43:10Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 169,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA5MjU1ODcz",
+      "title": "Apply final (?) test vectors.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/169",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-10-23T22:48:24Z",
+      "updatedAt": "2020-10-23T22:49:03Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "baseRefName": "master",
+      "baseRefOid": "4e4f2f813a7d60a25a27b05536b5805d175c4db2",
+      "headRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "headRefName": "caw/final-vectors",
+      "headRefOid": "797b849a53f741cb03c8030610e6ed155ef739ca",
+      "closedAt": "2020-10-23T22:49:03Z",
+      "mergedAt": "2020-10-23T22:49:03Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "e7038eae3da100affaa927c019b4f9ec8e6324e4"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
