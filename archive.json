@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-23T00:33:07.931263+00:00",
+  "timestamp": "2020-10-23T14:51:25.322608+00:00",
   "repo": "cfrg/draft-irtf-cfrg-hpke",
   "labels": [
     {
@@ -13055,7 +13055,7 @@
       "labels": [],
       "body": "Closes #152, #144, #146, #143, #141.\r\n\r\nI'll update the test vectors (and address #154 and #147) in a followup PR. \r\n\r\ncc @cjpatton (for the IV change), @davidben, @blipp, @rozbb, @fredericjacobs, @kjacobs-moz",
       "createdAt": "2020-10-21T22:56:15Z",
-      "updatedAt": "2020-10-23T00:33:02Z",
+      "updatedAt": "2020-10-23T04:09:12Z",
       "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
       "baseRefName": "master",
       "baseRefOid": "d7c239315247e59c2d563cb7c44c918552489e4a",
@@ -13133,6 +13133,26 @@
               "updatedAt": "2020-10-23T00:33:02Z"
             }
           ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE1MjYyNTI3",
+          "commit": {
+            "abbreviatedOid": "ea70e9f"
+          },
+          "author": "rozbb",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-10-23T04:09:12Z",
+          "updatedAt": "2020-10-23T04:09:12Z",
+          "comments": [
+            {
+              "originalPosition": 160,
+              "body": "In a new PR I use `order` one or two more times in different sections. This brings up the question of where, if anywhere, to include these constants. How important is it that these be here?",
+              "createdAt": "2020-10-23T04:09:12Z",
+              "updatedAt": "2020-10-23T04:09:12Z"
+            }
+          ]
         }
       ]
     },
@@ -13148,13 +13168,13 @@
       "labels": [],
       "body": "# Rationale\r\n\r\nI'm sorry for pushing this harder, but hear me out: this is better than the current workaround, which is making users carry the IKM they seeded their `DeriveKeyPair()` with.\r\n\r\n1. If a user literally ever uses `GenerateKeyPair()`, or uses `DeriveKeyPair()` and fails to save their IKM for any reason, they are badly and unnecessarily inconvenienced. They can continue to use their secret key for as long as their program runs, but they have no way to save the state of their own program.\r\n2. Ok, maybe a library anticipates this and decides to carry the IKM along with the secret key, or maybe it decides to expose some serialize/deserialize functionality that's compatible with everyone else using that library. Then great for that library! But should have something that _all_ libraries are guaranteed to do.\r\n3. This functionality is already implemented and exposed by `go-hpke` and `rust-hpke`, minus some validation checks.\r\n\r\nTo reiterate a point in 1, because I think it's a weird consequence of the current API: **if you use `GenerateKeyPair()`, you have no way to save your keypair.**\r\n\r\n# Specifics\r\n\r\n* I changed \"secret key\" to \"private key\" for consistency and because the latter is by far the more common term\r\n* I made the `SerializeSk()` routines canonicalize their outputs because 1. it's easy, and 2. users might have some unfounded expectations about equality of secret keys (\"I'll just check if this secret key is in my local database by doing a bytestring equality test\"). Canonicalizing makes these expectations true.\r\n* Aside for the purpose of canonicalization, I made the P-curve privkey serialization routine do a reduction mod `order` because SECG explicitly assumes that the secret key is an integer in the range `[0, order-1]`, but the HPKE spec makes no such assertion about P-curve privkeys\r\n* I made 0 an invalid secret key because there's literally no valid way to use a 0 secret key. Any DH op you do will produce the point at infinity, which MUST be treated as an error. So we may as well catch it as early as possible for easier debugging",
       "createdAt": "2020-10-22T03:25:27Z",
-      "updatedAt": "2020-10-22T15:47:35Z",
+      "updatedAt": "2020-10-23T14:51:18Z",
       "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
       "baseRefName": "master",
-      "baseRefOid": "d7c239315247e59c2d563cb7c44c918552489e4a",
+      "baseRefOid": "2bc1482f8c98ed698f8c8f57e4162691fc2d4d54",
       "headRepository": "rozbb/draft-irtf-cfrg-hpke",
       "headRefName": "serializesk",
-      "headRefOid": "ac3b323e68d5aa29a9a8fc1dd3f343919a009bb9",
+      "headRefOid": "6a0ae768fc133e6e61c615940d5d36a78607ec5a",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -13166,9 +13186,65 @@
           "body": "@rozbb thanks! Since the API is not strictly needed for the protocol, and really only helpful for implementations, can we remove `SerializeSk` from the KEM interface and just specify it in an appendix (as you've done)? (We should also then revert the `SerializePk` name change, too.)",
           "createdAt": "2020-10-22T15:47:21Z",
           "updatedAt": "2020-10-22T15:47:35Z"
+        },
+        {
+          "author": "rozbb",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Fixed. Should be a bit cleaner now",
+          "createdAt": "2020-10-23T03:42:17Z",
+          "updatedAt": "2020-10-23T03:42:17Z"
         }
       ],
       "reviews": []
+    },
+    {
+      "number": 166,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA4OTEzMjA1",
+      "title": "Add plaintext length hiding to non-goals",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/166",
+      "state": "MERGED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addressing this email on the CFRG ml https://mailarchive.ietf.org/arch/msg/cfrg/67D-qlKwuGsGY_H_ImGoTWnGjnM/\r\n\r\nAlso, fixing two problems with the build I had at least locally:\r\n- apparently it's not ok to cite two references in one `{{\u2026}}`\r\n- apparently it's not ok to have code/typewriter text in section headings",
+      "createdAt": "2020-10-23T11:49:40Z",
+      "updatedAt": "2020-10-23T14:50:36Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "baseRefName": "master",
+      "baseRefOid": "2bc1482f8c98ed698f8c8f57e4162691fc2d4d54",
+      "headRepository": "blipp/draft-irtf-cfrg-hpke",
+      "headRefName": "blipp_length",
+      "headRefOid": "6b617d8f0bc2fda470e22d211f73b8419571c233",
+      "closedAt": "2020-10-23T14:50:36Z",
+      "mergedAt": "2020-10-23T14:50:36Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "b5525046de9c01da373f3163865b4c6444f00cbf"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTE1NzQwNDAx",
+          "commit": {
+            "abbreviatedOid": "6d16959"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-10-23T14:49:59Z",
+          "updatedAt": "2020-10-23T14:50:19Z",
+          "comments": [
+            {
+              "originalPosition": 36,
+              "body": "```suggestion\r\n* Hiding plaintext length - AEAD ciphertexts produced by HPKE do not\r\n  hide the plaintext length. Applications requiring this level of\r\n  privacy should use a suitable padding mechanism. See\r\n  {{?I-D.ietf-tls-esni}} and {{?RFC8467}} for examples of protocol-specific\r\n  padding policies.\r\n```",
+              "createdAt": "2020-10-23T14:49:59Z",
+              "updatedAt": "2020-10-23T14:50:26Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
