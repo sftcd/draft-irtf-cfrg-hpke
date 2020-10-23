@@ -93,7 +93,7 @@ Table of Contents
        7.1.3.  DeriveKeyPair . . . . . . . . . . . . . . . . . . . .  21
        7.1.4.  Validation of Inputs and Outputs  . . . . . . . . . .  23
        7.1.5.  Future KEMs . . . . . . . . . . . . . . . . . . . . .  23
-     7.2.  Key Derivation Functions (KDFs) . . . . . . . . . . . . .  23
+     7.2.  Key Derivation Functions (KDFs) . . . . . . . . . . . . .  24
        7.2.1.  Input Length Restrictions . . . . . . . . . . . . . .  24
      7.3.  Authenticated Encryption with Associated Data (AEAD)
            Functions . . . . . . . . . . . . . . . . . . . . . . . .  25
@@ -103,7 +103,7 @@ Table of Contents
        8.1.2.  Computational Analysis  . . . . . . . . . . . . . . .  27
        8.1.3.  Post-Quantum Security . . . . . . . . . . . . . . . .  29
      8.2.  Security Requirements on a KEM used within HPKE . . . . .  29
-       8.2.1.  Encap/Decap Interface . . . . . . . . . . . . . . . .  29
+       8.2.1.  Encap/Decap Interface . . . . . . . . . . . . . . . .  30
        8.2.2.  AuthEncap/AuthDecap Interface . . . . . . . . . . . .  30
      8.3.  Security Requirements on a KDF  . . . . . . . . . . . . .  30
 
@@ -1142,22 +1142,21 @@ Internet-Draft                    HPKE                      October 2020
    the KEM performs the Field-Element-to-Octet-String conversion
    according to [SECG].  If the private key is an integer outside the
    range "[0, order-1]", where "order" is the order of the curve being
-   used, the private key MUST be reduced to its representative in "[0,
-   order-1]" before being serialized.  "DeserializePrivateKey()"
-   performs the Octet-String-to-Field-Element conversion according to
-   [SECG].
+   used, the private key is reduced to its representative in "[0, order-
+   1]" before being serialized.  Curve orders can be found in section
+   D.1.2 of [NISTCurves].  "DeserializePrivateKey()" performs the Octet-
+   String-to-Field-Element conversion according to [SECG].
 
    For X25519 and X448, private keys are identical to their byte string
    representation, so little processing has to be done.  The
-   "SerializePrivateKey()" function MUST clamp its output and
-   "DeserializePrivateKey()" MUST clamp its input, where _clamping_
-   refers to the bitwise operations performed on "k" in the
-   "decodeScalar25519()" and "decodeScalar448()" functions defined in
-   section 5 of [RFC7748].
+   "SerializePrivateKey()" function MUST clamp the private key before
+   returning it, where _clamping_ refers to the bitwise operations
+   performed on "k" in the "decodeScalar25519()" and "decodeScalar448()"
+   functions defined in section 5 of [RFC7748].  The
+   "DeserializePrivateKey()" function is the identity function.
 
-   To catch invalid keys early on, implementors of DHKEMs SHOULD check
-   that deserialized private keys are not equivalent to 0 (mod "order"),
-   where "order" is the order of the DH group.
+   In all cases, deserialized private keys MUST be validated before they
+   can be used.  See Section 7.1.4 for specifics.
 
 7.1.3.  DeriveKeyPair
 
@@ -1169,6 +1168,7 @@ Internet-Draft                    HPKE                      October 2020
    All invocations of KDF functions (such as "LabeledExtract" or
    "LabeledExpand") in any DHKEM's "DeriveKeyPair()" function use the
    DHKEM's associated KDF (as opposed to the ciphersuite's KDF).
+
 
 
 
@@ -1250,10 +1250,20 @@ Internet-Draft                    HPKE                      October 2020
    senders and recipients MUST ensure the Diffie-Hellman shared secret
    is not the point at infinity.
 
+   For P-256, P-384 and P-521, "DeserializePrivateKey()" MUST check that
+   the given integer is not 0 (mod "order"), where "order" is the order
+   of the curve being used.
+
    For X25519 and X448, public keys and Diffie-Hellman outputs MUST be
    validated as described in [RFC7748].  In particular, recipients MUST
    check whether the Diffie-Hellman shared secret is the all-zero value
    and abort if so.
+
+   For X25519 and X448, "DeserializePrivateKey()" MUST check that the
+   given integer, after clamping, is not 0 (mod "order"), where "order"
+   is the order of the curve being used. _Clamping_ refers to the
+   bitwise operations performed on "k" in the "decodeScalar25519()" and
+   "decodeScalar448()" functions defined in section 5 of [RFC7748].
 
 7.1.5.  Future KEMs
 
@@ -1269,6 +1279,17 @@ Internet-Draft                    HPKE                      October 2020
    MUST specify only one encoding algorithm whose output length is
    "Npk".
 
+
+
+
+
+
+
+Barnes, et al.            Expires 26 April 2021                [Page 23]
+
+Internet-Draft                    HPKE                      October 2020
+
+
 7.2.  Key Derivation Functions (KDFs)
 
                 +========+=============+=====+===========+
@@ -1282,13 +1303,6 @@ Internet-Draft                    HPKE                      October 2020
                 +--------+-------------+-----+-----------+
                 | 0x0003 | HKDF-SHA512 | 64  | [RFC5869] |
                 +--------+-------------+-----+-----------+
-
-
-
-Barnes, et al.            Expires 26 April 2021                [Page 23]
-
-Internet-Draft                    HPKE                      October 2020
-
 
                                  Table 3
 
@@ -1324,6 +1338,14 @@ Internet-Draft                    HPKE                      October 2020
    Future specifications which define new KDFs MUST specify bounds for
    these variable-length parameters.
 
+
+
+
+Barnes, et al.            Expires 26 April 2021                [Page 24]
+
+Internet-Draft                    HPKE                      October 2020
+
+
    The values for "psk", "psk_id", and "info" which are inputs to
    "LabeledExtract()" were computed with the following expression:
 
@@ -1338,14 +1360,6 @@ max_size_hash_input - Nb - Nh - size_label_rfcXXXX - size_suite_id - size_input_
    of the underlying hash function in bytes, "Nb" is the block size of
    the underlying hash function in bytes, "size_label_rfcXXXX" is the
    size of "HPKE-06" in bytes and equals 7, "size_suite_id" is the size
-
-
-
-Barnes, et al.            Expires 26 April 2021                [Page 24]
-
-Internet-Draft                    HPKE                      October 2020
-
-
    of the "suite_id" and equals 10, and "size_input_label" is the size
    of the label used as parameter to "LabeledExtract()" or
    "LabeledExpand()".
@@ -1381,6 +1395,13 @@ Internet-Draft                    HPKE                      October 2020
    *  Message secrecy: Confidentiality of the sender's messages against
       chosen ciphertext attacks
 
+
+
+Barnes, et al.            Expires 26 April 2021                [Page 25]
+
+Internet-Draft                    HPKE                      October 2020
+
+
    *  Export key secrecy: Indistinguishability of each export secret
       from a uniformly random bitstring of equal length, i.e.,
       "Context.Export" is a variable-length PRF
@@ -1391,16 +1412,6 @@ Internet-Draft                    HPKE                      October 2020
    These security goals are expected to hold for any honest sender and
    honest recipient keys, as well as if the honest sender and honest
    recipient keys are the same.
-
-
-
-
-
-
-Barnes, et al.            Expires 26 April 2021                [Page 25]
-
-Internet-Draft                    HPKE                      October 2020
-
 
    As noted in Section 8.6, HPKE does not provide forward secrecy.  In
    the Base mode, the secrecy properties are only expected to hold if
@@ -1439,6 +1450,14 @@ Internet-Draft                    HPKE                      October 2020
    Applications that require resistance against key-compromise
    impersonation SHOULD take extra steps to prevent this attack.  One
    possibility is to produce a digital signature over "(enc, ct)" tuples
+
+
+
+Barnes, et al.            Expires 26 April 2021                [Page 26]
+
+Internet-Draft                    HPKE                      October 2020
+
+
    using a sender's private key - where "ct" is an AEAD ciphertext
    produced by the single-shot or multi-shot API, and "enc" the
    corresponding KEM encapsulated key.
@@ -1450,13 +1469,6 @@ Internet-Draft                    HPKE                      October 2020
    is broken by a quantum computer, the security properties are
    preserved through the use of a pre-shared key.  This assumes that the
    pre-shared key has not been compromised, as described in [WireGuard].
-
-
-
-Barnes, et al.            Expires 26 April 2021                [Page 26]
-
-Internet-Draft                    HPKE                      October 2020
-
 
 8.1.2.  Computational Analysis
 
@@ -1494,18 +1506,6 @@ Internet-Draft                    HPKE                      October 2020
       as a random oracle.  "Expand()" can be modeled as a pseudorandom
       function, wherein the first argument is the key.
 
-   *  "Extract()" and "Expand()" (elsewhere): "Extract()" can be modeled
-      as a random oracle.  "Expand()" can be modeled as a pseudorandom
-      function, wherein the first argument is the key.
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1513,6 +1513,10 @@ Barnes, et al.            Expires 26 April 2021                [Page 27]
 
 Internet-Draft                    HPKE                      October 2020
 
+
+   *  "Extract()" and "Expand()" (elsewhere): "Extract()" can be modeled
+      as a random oracle.  "Expand()" can be modeled as a pseudorandom
+      function, wherein the first argument is the key.
 
    In particular, the KDFs and DH groups defined in this document (see
    Section 7.2 and Section 7.1) satisfy these properties when used as
@@ -1558,10 +1562,6 @@ Internet-Draft                    HPKE                      October 2020
    Diffie-Hellman (GDH) problem is hard in the appropriate subgroup
    [GAP], and that HKDF can be modeled as a random oracle.
 
-   Further, [ABHKLR20] proves composition theorems, showing that HPKE's
-   Auth mode fulfills the security notions of authenticated public key
-   encryption for all KDFs and AEAD schemes specified in this document,
-   given any authenticated KEM satisfying the previously defined
 
 
 
@@ -1570,6 +1570,10 @@ Barnes, et al.            Expires 26 April 2021                [Page 28]
 Internet-Draft                    HPKE                      October 2020
 
 
+   Further, [ABHKLR20] proves composition theorems, showing that HPKE's
+   Auth mode fulfills the security notions of authenticated public key
+   encryption for all KDFs and AEAD schemes specified in this document,
+   given any authenticated KEM satisfying the previously defined
    security notions for authenticated KEMs.  The assumptions on the KDF
    are that "Extract()" and "Expand()" can be modeled as pseudorandom
    functions wherein the first argument is the key, respectively.  The
@@ -1611,13 +1615,9 @@ Internet-Draft                    HPKE                      October 2020
    if the KEM shared secret is only uniformly random as an element of
    some set prior to its encoding as byte string.
 
-8.2.1.  Encap/Decap Interface
 
-   As mentioned in Section 8, [CS01] provides some indications that if
-   the KEM's "Encap()"/"Decap()" interface (which is used in the Base
-   and PSK modes), is IND-CCA2-secure, HPKE is able to satisfy its
-   desired security properties.  An appropriate definition of IND-
-   CCA2-security for KEMs can be found in [CS01] and [BHK09].
+
+
 
 
 
@@ -1625,6 +1625,14 @@ Barnes, et al.            Expires 26 April 2021                [Page 29]
 
 Internet-Draft                    HPKE                      October 2020
 
+
+8.2.1.  Encap/Decap Interface
+
+   As mentioned in Section 8, [CS01] provides some indications that if
+   the KEM's "Encap()"/"Decap()" interface (which is used in the Base
+   and PSK modes), is IND-CCA2-secure, HPKE is able to satisfy its
+   desired security properties.  An appropriate definition of IND-
+   CCA2-security for KEMs can be found in [CS01] and [BHK09].
 
 8.2.2.  AuthEncap/AuthDecap Interface
 
@@ -1665,6 +1673,15 @@ Internet-Draft                    HPKE                      October 2020
    entropy and SHOULD be of length "Nh" bytes or longer.  Using a PSK
    longer than 32 bytes but shorter than "Nh" bytes is permitted.
 
+
+
+
+
+Barnes, et al.            Expires 26 April 2021                [Page 30]
+
+Internet-Draft                    HPKE                      October 2020
+
+
    HPKE is specified to use HKDF as key derivation function.  HKDF is
    not designed to slow down dictionary attacks, see [RFC5869].  Thus,
    HPKE's PSK mechanism is not suitable for use with a low-entropy
@@ -1674,14 +1691,6 @@ Internet-Draft                    HPKE                      October 2020
    PSK-recovering attacks.  This oracle can be the decryption operation
    on a captured HPKE ciphertext or any other recipient behavior which
    is observably different when using a wrong PSK.  The adversary knows
-
-
-
-Barnes, et al.            Expires 26 April 2021                [Page 30]
-
-Internet-Draft                    HPKE                      October 2020
-
-
    the KEM shared secret "shared_secret" if it knows all KEM private
    keys of one participant.  In the PSK mode this is trivially the case
    if the adversary acts as sender.
@@ -1721,6 +1730,14 @@ Internet-Draft                    HPKE                      October 2020
    "Expand()", such as "Hash()" and "HMAC()" in the case of HKDF.  It
    MUST be ensured that inputs to these invocations cannot collide with
    inputs to the internal invocations of these functions inside Extract
+
+
+
+Barnes, et al.            Expires 26 April 2021                [Page 31]
+
+Internet-Draft                    HPKE                      October 2020
+
+
    or Expand.  In HPKE's "KeySchedule()" this is avoided by using
    "Extract()" instead of "Hash()" on the arbitrary-length inputs "info"
    and "psk_id".
@@ -1729,14 +1746,6 @@ Internet-Draft                    HPKE                      October 2020
    "LabeledExpand()" ensures that any secrets derived in HPKE are bound
    to the scheme's name, even when possibly derived from the same
    Diffie-Hellman or KEM shared secret as in another scheme.
-
-
-
-
-Barnes, et al.            Expires 26 April 2021                [Page 31]
-
-Internet-Draft                    HPKE                      October 2020
-
 
 8.6.  External Requirements / Non-Goals
 
@@ -1776,15 +1785,6 @@ Internet-Draft                    HPKE                      October 2020
    might be considered sensitive, since in a given application context,
    they might identify the sender.
 
-   An application that wishes to protect these metadata values without
-   requiring further provisioning of keys can use an additional instance
-   of HPKE, using the unauthenticated Base mode.  Where the application
-   might have sent "(psk_id, pkS, enc, ciphertext)" before, it would now
-   send "(enc2, ciphertext2, enc, ciphertext)", where "(enc2,
-   ciphertext2)" represent the encryption of the "psk_id" and "pkS"
-   values.
-
-
 
 
 
@@ -1793,6 +1793,14 @@ Barnes, et al.            Expires 26 April 2021                [Page 32]
 
 Internet-Draft                    HPKE                      October 2020
 
+
+   An application that wishes to protect these metadata values without
+   requiring further provisioning of keys can use an additional instance
+   of HPKE, using the unauthenticated Base mode.  Where the application
+   might have sent "(psk_id, pkS, enc, ciphertext)" before, it would now
+   send "(enc2, ciphertext2, enc, ciphertext)", where "(enc2,
+   ciphertext2)" represent the encryption of the "psk_id" and "pkS"
+   values.
 
    The cost of this approach is an additional KEM operation each for the
    sender and the recipient.  A potential lower-cost approach (involving
@@ -1835,6 +1843,13 @@ Internet-Draft                    HPKE                      October 2020
 
    *  Value: The two-byte identifier for the algorithm
 
+
+
+Barnes, et al.            Expires 26 April 2021                [Page 33]
+
+Internet-Draft                    HPKE                      October 2020
+
+
    *  KEM: The name of the algorithm
 
    *  Nsecret: The length in bytes of a KEM shared secret produced by
@@ -1842,13 +1857,6 @@ Internet-Draft                    HPKE                      October 2020
 
    *  Nenc: The length in bytes of an encoded encapsulated key produced
       by the algorithm
-
-
-
-Barnes, et al.            Expires 26 April 2021                [Page 33]
-
-Internet-Draft                    HPKE                      October 2020
-
 
    *  Npk: The length in bytes of an encoded public key for the
       algorithm
@@ -1890,14 +1898,6 @@ Internet-Draft                    HPKE                      October 2020
 
    Template:
 
-   *  Value: The two-byte identifier for the algorithm
-
-   *  AEAD: The name of the algorithm
-
-   *  Nk: The length in bytes of a key for this algorithm
-
-   *  Nn: The length in bytes of a nonce for this algorithm
-
 
 
 
@@ -1905,6 +1905,14 @@ Barnes, et al.            Expires 26 April 2021                [Page 34]
 
 Internet-Draft                    HPKE                      October 2020
 
+
+   *  Value: The two-byte identifier for the algorithm
+
+   *  AEAD: The name of the algorithm
+
+   *  Nk: The length in bytes of a key for this algorithm
+
+   *  Nn: The length in bytes of a nonce for this algorithm
 
    *  Reference: Where this algorithm is defined
 
@@ -1946,6 +1954,14 @@ Internet-Draft                    HPKE                      October 2020
 
 12.2.  Informative References
 
+
+
+
+Barnes, et al.            Expires 26 April 2021                [Page 35]
+
+Internet-Draft                    HPKE                      October 2020
+
+
    [ABHKLR20] Alwen, J., Blanchet, B., Hauck, E., Kiltz, E., Lipp, B.,
               and D. Riepel, "A Formal Analysis of the HPKE Standard",
               2020.
@@ -1954,13 +1970,6 @@ Internet-Draft                    HPKE                      October 2020
               Key Cryptography for the Financial Services Industry --
               Key Agreement and Key Transport Using Elliptic Curve
               Cryptography", 2001.
-
-
-
-Barnes, et al.            Expires 26 April 2021                [Page 35]
-
-Internet-Draft                    HPKE                      October 2020
-
 
    [BHK09]    Mihir Bellare, ., Dennis Hofheinz, ., and . Eike Kiltz,
               "Subtleties in the Definition of IND-CCA: When and How
@@ -2001,15 +2010,6 @@ Internet-Draft                    HPKE                      October 2020
               (In)differentiability Results for H^2 and HMAC", 2013,
               <https://eprint.iacr.org/2013/382>.
 
-   [HPKEAnalysis]
-              Lipp, B., "An Analysis of Hybrid Public Key Encryption",
-              2020, <https://eprint.iacr.org/2020/243.pdf>.
-
-
-
-
-
-
 
 
 
@@ -2017,6 +2017,10 @@ Barnes, et al.            Expires 26 April 2021                [Page 36]
 
 Internet-Draft                    HPKE                      October 2020
 
+
+   [HPKEAnalysis]
+              Lipp, B., "An Analysis of Hybrid Public Key Encryption",
+              2020, <https://eprint.iacr.org/2020/243.pdf>.
 
    [I-D.ietf-mls-protocol]
               Barnes, R., Beurdouche, B., Millican, J., Omara, E., Cohn-
@@ -2059,13 +2063,9 @@ Internet-Draft                    HPKE                      October 2020
    [LGR20]    Len, J., Grubbs, P., and T. Ristenpart, "Partitioning
               Oracle Attacks".
 
-   [MAEA10]   Gayoso Martinez, V., Hernandez Alvarez, F., Hernandez
-              Encinas, L., and C. Sanchez Avila, "A Comparison of the
-              Standardized Versions of ECIES", 2010,
-              <https://ieeexplore.ieee.org/abstract/document/5604194/>.
 
-   [NaCl]     "Public-key authenticated encryption: crypto_box", 2019,
-              <https://nacl.cr.yp.to/box.html>.
+
+
 
 
 
@@ -2073,6 +2073,14 @@ Barnes, et al.            Expires 26 April 2021                [Page 37]
 
 Internet-Draft                    HPKE                      October 2020
 
+
+   [MAEA10]   Gayoso Martinez, V., Hernandez Alvarez, F., Hernandez
+              Encinas, L., and C. Sanchez Avila, "A Comparison of the
+              Standardized Versions of ECIES", 2010,
+              <https://ieeexplore.ieee.org/abstract/document/5604194/>.
+
+   [NaCl]     "Public-key authenticated encryption: crypto_box", 2019,
+              <https://nacl.cr.yp.to/box.html>.
 
    [NISTCurves]
               "Digital Signature Standard (DSS)", National Institute of
@@ -2114,14 +2122,6 @@ Internet-Draft                    HPKE                      October 2020
               Cryptography Group, ver. 2", 2009,
               <https://secg.org/sec1-v2.pdf>.
 
-   [SigncryptionDZ10]
-              "Practical Signcryption", Information Security
-              and Cryptography, DOI 10.1007/978-3-540-89411-7, 2010,
-              <https://doi.org/10.1007/978-3-540-89411-7>.
-
-
-
-
 
 
 
@@ -2129,6 +2129,11 @@ Barnes, et al.            Expires 26 April 2021                [Page 38]
 
 Internet-Draft                    HPKE                      October 2020
 
+
+   [SigncryptionDZ10]
+              "Practical Signcryption", Information Security
+              and Cryptography, DOI 10.1007/978-3-540-89411-7, 2010,
+              <https://doi.org/10.1007/978-3-540-89411-7>.
 
    [TestVectors]
               "HPKE Test Vectors", 2020, <https://github.com/cfrg/draft-
@@ -2172,11 +2177,6 @@ exporter_secret:
 84b158baff479e2a1e0392d62f6ebcd5ef5ce6002b7a06d1c91d62c9612761ba
 
 A.1.1.1.  Encryptions
-
-
-
-
-
 
 
 
