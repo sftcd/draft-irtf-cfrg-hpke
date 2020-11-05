@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-11-05T02:42:44.457279+00:00",
+  "timestamp": "2020-11-05T17:06:28.603270+00:00",
   "repo": "cfrg/draft-irtf-cfrg-hpke",
   "labels": [
     {
@@ -2113,9 +2113,9 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "I started a list of implementations here:\r\n\r\n   https://github.com/cfrg/draft-irtf-cfrg-hpke/blob/master/README.md\r\n\r\nWe should fill this out with other known implementations.\r\n\r\ncc @kjacobs-moz, @davidben, @dmcardle, @raphaelrobert, @nymble, @danielhavir, @armfazh, @fredericjacobs",
+      "body": "I started a list of implementations here:\r\n\r\n   https://github.com/cfrg/draft-irtf-cfrg-hpke/blob/master/README.md\r\n\r\nWe should fill this out with other known implementations.\r\n\r\ncc @kjacobs-moz, @davidben, @dmcardle, @raphaelrobert, @nymble, @danielhavir, @armfazh, @fredericjacobs, @mcarrickscott",
       "createdAt": "2020-11-05T01:10:01Z",
-      "updatedAt": "2020-11-05T01:10:20Z",
+      "updatedAt": "2020-11-05T14:55:10Z",
       "closedAt": null,
       "comments": []
     }
@@ -13574,6 +13574,48 @@
           "body": "",
           "createdAt": "2020-11-05T02:41:51Z",
           "updatedAt": "2020-11-05T02:41:51Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 172,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTE2MTkxMzE1",
+      "title": "Add NSS to list of implementations",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/172",
+      "state": "MERGED",
+      "author": "kjacobs-moz",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Adds reference to NSS implementation, per #170.",
+      "createdAt": "2020-11-05T16:37:40Z",
+      "updatedAt": "2020-11-05T17:05:55Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "baseRefName": "master",
+      "baseRefOid": "b913949eb7b80f0b8b0f02bbf988b70ae9f00393",
+      "headRepository": "kjacobs-moz/draft-irtf-cfrg-hpke",
+      "headRefName": "master",
+      "headRefOid": "ac4d8b003f6ceab46fcc751dec2d398d84043c01",
+      "closedAt": "2020-11-05T17:05:55Z",
+      "mergedAt": "2020-11-05T17:05:55Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "0f5baba9dafdecbe05444de6e59c005dd02c5534"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTI0NDc2NDky",
+          "commit": {
+            "abbreviatedOid": "ac4d8b0"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-11-05T17:05:50Z",
+          "updatedAt": "2020-11-05T17:05:50Z",
           "comments": []
         }
       ]
