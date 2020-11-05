@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-23T22:57:30.474776+00:00",
+  "timestamp": "2020-11-05T02:42:44.457279+00:00",
   "repo": "cfrg/draft-irtf-cfrg-hpke",
   "labels": [
     {
@@ -1979,7 +1979,7 @@
       "id": "MDU6SXNzdWU3MDY2ODEyNjU=",
       "title": "Include DeriveKeyPair output in test vectors",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/154",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "kjacobs-moz",
       "authorAssociation": "NONE",
       "assignees": [
@@ -1988,9 +1988,24 @@
       "labels": [],
       "body": "Currently, there are two ways to generate a keypair for HPKE: `DeriveKeyPair` and `GenerateKeyPair`. The former is unnecessary when HPKE is used only for ECH. For libraries that choose to not implement or export `DeriveKeyPair`, it would be useful to have its output captured in the test vectors. ",
       "createdAt": "2020-09-22T20:45:44Z",
-      "updatedAt": "2020-09-23T14:47:15Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2020-11-05T01:08:02Z",
+      "closedAt": "2020-11-05T01:08:02Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@kjacobs-moz I think this is resolved now that the ikm and resulting public keys are included in the test vectors. Can we close this?",
+          "createdAt": "2020-11-05T01:06:30Z",
+          "updatedAt": "2020-11-05T01:06:30Z"
+        },
+        {
+          "author": "kjacobs-moz",
+          "authorAssociation": "NONE",
+          "body": "Yes, thanks!",
+          "createdAt": "2020-11-05T01:08:02Z",
+          "updatedAt": "2020-11-05T01:08:02Z"
+        }
+      ]
     },
     {
       "number": 155,
@@ -2087,6 +2102,22 @@
           "updatedAt": "2020-10-17T15:38:17Z"
         }
       ]
+    },
+    {
+      "number": 170,
+      "id": "MDU6SXNzdWU3MzY1Mjg3MTI=",
+      "title": "List known implementations",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/170",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I started a list of implementations here:\r\n\r\n   https://github.com/cfrg/draft-irtf-cfrg-hpke/blob/master/README.md\r\n\r\nWe should fill this out with other known implementations.\r\n\r\ncc @kjacobs-moz, @davidben, @dmcardle, @raphaelrobert, @nymble, @danielhavir, @armfazh, @fredericjacobs",
+      "createdAt": "2020-11-05T01:10:01Z",
+      "updatedAt": "2020-11-05T01:10:20Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -13496,6 +13527,56 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 171,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTE1NzM1MTY5",
+      "title": "Add BoringSSL to implementation list",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/171",
+      "state": "MERGED",
+      "author": "dmcardle",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Adding BoringSSL as per #170.\r\n\r\ncc @davidben",
+      "createdAt": "2020-11-05T01:39:33Z",
+      "updatedAt": "2020-11-05T02:42:07Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "baseRefName": "master",
+      "baseRefOid": "60bd276d48ea4797972b13dadd16fd247e990c81",
+      "headRepository": "dmcardle/draft-irtf-cfrg-hpke",
+      "headRefName": "master",
+      "headRefOid": "300a01e17e8f96d55e17aa98c27d6fdbbf4398bc",
+      "closedAt": "2020-11-05T02:41:55Z",
+      "mergedAt": "2020-11-05T02:41:55Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "b913949eb7b80f0b8b0f02bbf988b70ae9f00393"
+      },
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks, @dmcardle!",
+          "createdAt": "2020-11-05T02:42:07Z",
+          "updatedAt": "2020-11-05T02:42:07Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTIzODg2NTk5",
+          "commit": {
+            "abbreviatedOid": "300a01e"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-11-05T02:41:51Z",
+          "updatedAt": "2020-11-05T02:41:51Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
