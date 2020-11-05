@@ -5,11 +5,11 @@
 Network Working Group                                        R.L. Barnes
 Internet-Draft                                                     Cisco
 Intended status: Informational                              K. Bhargavan
-Expires: 26 April 2021                                           B. Lipp
+Expires: 9 May 2021                                              B. Lipp
                                                                    Inria
                                                                C.A. Wood
                                                               Cloudflare
-                                                         23 October 2020
+                                                         5 November 2020
 
 
                       Hybrid Public Key Encryption
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 April 2021.
+   This Internet-Draft will expire on 9 May 2021.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Barnes, et al.            Expires 26 April 2021                 [Page 1]
+Barnes, et al.             Expires 9 May 2021                   [Page 1]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Barnes, et al.            Expires 26 April 2021                 [Page 2]
+Barnes, et al.             Expires 9 May 2021                   [Page 2]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
      8.4.  Pre-Shared Key Recommendations  . . . . . . . . . . . . .  30
@@ -165,9 +165,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                 [Page 3]
+Barnes, et al.             Expires 9 May 2021                   [Page 3]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 1.  Introduction
@@ -221,9 +221,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                 [Page 4]
+Barnes, et al.             Expires 9 May 2021                   [Page 4]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    *  "pk(skX)": The KEM public key corresponding to the KEM private key
@@ -277,9 +277,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                 [Page 5]
+Barnes, et al.             Expires 9 May 2021                   [Page 5]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
       -  "Decap(enc, sk)": Deterministic algorithm using the private key
@@ -333,9 +333,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                 [Page 6]
+Barnes, et al.             Expires 9 May 2021                   [Page 6]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
       -  "Nk": The length in bytes of a key for this algorithm
@@ -389,9 +389,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                 [Page 7]
+Barnes, et al.             Expires 9 May 2021                   [Page 7]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    The value of "suite_id" depends on where the KDF is used; it is
@@ -445,9 +445,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                 [Page 8]
+Barnes, et al.             Expires 9 May 2021                   [Page 8]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 def ExtractAndExpand(dh, kem_context):
@@ -501,9 +501,9 @@ def AuthDecap(enc, skR, pkS):
 
 
 
-Barnes, et al.            Expires 26 April 2021                 [Page 9]
+Barnes, et al.             Expires 9 May 2021                   [Page 9]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    The implicit "suite_id" value used within "LabeledExtract" and
@@ -557,9 +557,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 10]
+Barnes, et al.             Expires 9 May 2021                  [Page 10]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    a KEM private key, and one which authenticates possession of both a
@@ -613,9 +613,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 11]
+Barnes, et al.             Expires 9 May 2021                  [Page 11]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    The procedures described in this session are laid out in a Python-
@@ -669,9 +669,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 12]
+Barnes, et al.             Expires 9 May 2021                  [Page 12]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    In the Auth and AuthPSK modes, the recipient is assured that the
@@ -725,9 +725,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 13]
+Barnes, et al.             Expires 9 May 2021                  [Page 13]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 default_psk = ""
@@ -781,9 +781,9 @@ def KeySchedule(mode, shared_secret, info, psk, psk_id):
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 14]
+Barnes, et al.             Expires 9 May 2021                  [Page 14]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    The KEM shared secret is combined via the KDF with information
@@ -837,9 +837,9 @@ def SetupBaseR(enc, skR, info):
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 15]
+Barnes, et al.             Expires 9 May 2021                  [Page 15]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    entities (precisely two, in the case of DHKEM) could have produced
@@ -893,9 +893,9 @@ def SetupAuthPSKR(enc, skR, info, psk, psk_id, pkS):
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 16]
+Barnes, et al.             Expires 9 May 2021                  [Page 16]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 5.2.  Encryption and Decryption
@@ -949,9 +949,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 17]
+Barnes, et al.             Expires 9 May 2021                  [Page 17]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    It is up to the application to ensure that encryptions and
@@ -1005,9 +1005,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 18]
+Barnes, et al.             Expires 9 May 2021                  [Page 18]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 def Context.Export(exporter_context, L):
@@ -1061,9 +1061,9 @@ def Context.Export(exporter_context, L):
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 19]
+Barnes, et al.             Expires 9 May 2021                  [Page 19]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    def SendExport<MODE>(pkR, info, exporter_context, L, ...):
@@ -1117,9 +1117,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 20]
+Barnes, et al.             Expires 9 May 2021                  [Page 20]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 7.1.1.  SerializePublicKey and DeserializePublicKey
@@ -1173,9 +1173,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 21]
+Barnes, et al.             Expires 9 May 2021                  [Page 21]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    For P-256, P-384 and P-521, the "DeriveKeyPair()" function of the KEM
@@ -1229,9 +1229,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 22]
+Barnes, et al.             Expires 9 May 2021                  [Page 22]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 7.1.4.  Validation of Inputs and Outputs
@@ -1285,9 +1285,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 23]
+Barnes, et al.             Expires 9 May 2021                  [Page 23]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
                                  Table 3
@@ -1341,9 +1341,9 @@ max_size_hash_input - Nb - Nh - size_label_rfcXXXX - size_suite_id - size_input_
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 24]
+Barnes, et al.             Expires 9 May 2021                  [Page 24]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    of the "suite_id" and equals 10, and "size_input_label" is the size
@@ -1397,9 +1397,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 25]
+Barnes, et al.             Expires 9 May 2021                  [Page 25]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    As noted in Section 8.6, HPKE does not provide forward secrecy.  In
@@ -1453,9 +1453,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 26]
+Barnes, et al.             Expires 9 May 2021                  [Page 26]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 8.1.2.  Computational Analysis
@@ -1509,9 +1509,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 27]
+Barnes, et al.             Expires 9 May 2021                  [Page 27]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    In particular, the KDFs and DH groups defined in this document (see
@@ -1565,9 +1565,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 28]
+Barnes, et al.             Expires 9 May 2021                  [Page 28]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    security notions for authenticated KEMs.  The assumptions on the KDF
@@ -1621,9 +1621,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 29]
+Barnes, et al.             Expires 9 May 2021                  [Page 29]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 8.2.2.  AuthEncap/AuthDecap Interface
@@ -1677,9 +1677,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 30]
+Barnes, et al.             Expires 9 May 2021                  [Page 30]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    the KEM shared secret "shared_secret" if it knows all KEM private
@@ -1733,9 +1733,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 31]
+Barnes, et al.             Expires 9 May 2021                  [Page 31]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 8.6.  External Requirements / Non-Goals
@@ -1789,9 +1789,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 32]
+Barnes, et al.             Expires 9 May 2021                  [Page 32]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    The cost of this approach is an additional KEM operation each for the
@@ -1845,9 +1845,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 33]
+Barnes, et al.             Expires 9 May 2021                  [Page 33]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    *  Npk: The length in bytes of an encoded public key for the
@@ -1901,9 +1901,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 34]
+Barnes, et al.             Expires 9 May 2021                  [Page 34]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    *  Reference: Where this algorithm is defined
@@ -1957,9 +1957,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 35]
+Barnes, et al.             Expires 9 May 2021                  [Page 35]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    [BHK09]    Mihir Bellare, ., Dennis Hofheinz, ., and . Eike Kiltz,
@@ -1968,9 +1968,10 @@ Internet-Draft                    HPKE                      October 2020
               <https://eprint.iacr.org/2009/418>.
 
    [BJM97]    Blake-Wilson, S., Johnson, D., and A. Menezes, "Key
-              agreement protocols and their security analysis",
-              Crytography and Coding pp. 30-45, DOI 10.1007/bfb0024447,
-              1997, <https://doi.org/10.1007/bfb0024447>.
+              agreement protocols and their security analysis: Extended
+              Abstract", Crytography and Coding pp. 30-45,
+              DOI 10.1007/bfb0024447, 1997,
+              <https://doi.org/10.1007/bfb0024447>.
 
    [BNT19]    Bellare, M., Ng, R., and B. Tackmann, "Nonces Are Noticed:
               AEAD Revisited", 2019,
@@ -1988,8 +1989,9 @@ Internet-Draft                    HPKE                      October 2020
               pdf/10.1007/3-540-44586-2_8.pdf>.
 
    [GCM]      Dworkin, M., "Recommendation for block cipher modes of
-              operation :", National Institute of Standards and
-              Technology report, DOI 10.6028/nist.sp.800-38d, 2007,
+              operation :: GaloisCounter Mode (GCM) and GMAC", National
+              Institute of Standards and Technology report,
+              DOI 10.6028/nist.sp.800-38d, 2007,
               <https://doi.org/10.6028/nist.sp.800-38d>.
 
    [HHK06]    Herranz, J., Hofheinz, D., and E. Kiltz, "Some
@@ -2005,25 +2007,21 @@ Internet-Draft                    HPKE                      October 2020
               Lipp, B., "An Analysis of Hybrid Public Key Encryption",
               2020, <https://eprint.iacr.org/2020/243.pdf>.
 
-
-
-
-
-
-
-
-
-Barnes, et al.            Expires 26 April 2021                [Page 36]
-
-Internet-Draft                    HPKE                      October 2020
-
-
    [I-D.ietf-mls-protocol]
               Barnes, R., Beurdouche, B., Millican, J., Omara, E., Cohn-
               Gordon, K., and R. Robert, "The Messaging Layer Security
+
+
+
+Barnes, et al.             Expires 9 May 2021                  [Page 36]
+
+Internet-Draft                    HPKE                     November 2020
+
+
               (MLS) Protocol", Work in Progress, Internet-Draft, draft-
-              ietf-mls-protocol-09, 6 March 2020, <http://www.ietf.org/
-              internet-drafts/draft-ietf-mls-protocol-09.txt>.
+              ietf-mls-protocol-10, 31 October 2020,
+              <http://www.ietf.org/internet-drafts/draft-ietf-mls-
+              protocol-10.txt>.
 
    [I-D.ietf-tls-esni]
               Rescorla, E., Oku, K., Sullivan, N., and C. Wood, "TLS
@@ -2069,9 +2067,11 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 37]
+
+
+Barnes, et al.             Expires 9 May 2021                  [Page 37]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    [NISTCurves]
@@ -2125,9 +2125,9 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 38]
+Barnes, et al.             Expires 9 May 2021                  [Page 38]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    [TestVectors]
@@ -2181,9 +2181,9 @@ A.1.1.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 39]
+Barnes, et al.             Expires 9 May 2021                  [Page 39]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -2237,9 +2237,9 @@ A.1.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 40]
+Barnes, et al.             Expires 9 May 2021                  [Page 40]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 1
@@ -2293,9 +2293,9 @@ A.1.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 41]
+Barnes, et al.             Expires 9 May 2021                  [Page 41]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -2349,9 +2349,9 @@ A.1.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 42]
+Barnes, et al.             Expires 9 May 2021                  [Page 42]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 2
@@ -2405,9 +2405,9 @@ A.1.3.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 43]
+Barnes, et al.             Expires 9 May 2021                  [Page 43]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -2461,9 +2461,9 @@ A.1.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 44]
+Barnes, et al.             Expires 9 May 2021                  [Page 44]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 3
@@ -2517,9 +2517,9 @@ A.1.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 45]
+Barnes, et al.             Expires 9 May 2021                  [Page 45]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -2573,9 +2573,9 @@ A.2.1.  Base Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 46]
+Barnes, et al.             Expires 9 May 2021                  [Page 46]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 0
@@ -2629,9 +2629,9 @@ A.2.1.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 47]
+Barnes, et al.             Expires 9 May 2021                  [Page 47]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -2685,9 +2685,9 @@ A.2.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 48]
+Barnes, et al.             Expires 9 May 2021                  [Page 48]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 1
@@ -2741,9 +2741,9 @@ A.2.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 49]
+Barnes, et al.             Expires 9 May 2021                  [Page 49]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -2797,9 +2797,9 @@ A.2.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 50]
+Barnes, et al.             Expires 9 May 2021                  [Page 50]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 2
@@ -2853,9 +2853,9 @@ A.2.3.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 51]
+Barnes, et al.             Expires 9 May 2021                  [Page 51]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -2909,9 +2909,9 @@ A.2.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 52]
+Barnes, et al.             Expires 9 May 2021                  [Page 52]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 3
@@ -2965,9 +2965,9 @@ A.2.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 53]
+Barnes, et al.             Expires 9 May 2021                  [Page 53]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -3021,9 +3021,9 @@ A.3.1.  Base Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 54]
+Barnes, et al.             Expires 9 May 2021                  [Page 54]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 0
@@ -3077,9 +3077,9 @@ A.3.1.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 55]
+Barnes, et al.             Expires 9 May 2021                  [Page 55]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -3133,9 +3133,9 @@ A.3.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 56]
+Barnes, et al.             Expires 9 May 2021                  [Page 56]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 1
@@ -3189,9 +3189,9 @@ A.3.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 57]
+Barnes, et al.             Expires 9 May 2021                  [Page 57]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -3245,9 +3245,9 @@ A.3.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 58]
+Barnes, et al.             Expires 9 May 2021                  [Page 58]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 2
@@ -3301,9 +3301,9 @@ A.3.3.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 59]
+Barnes, et al.             Expires 9 May 2021                  [Page 59]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -3357,9 +3357,9 @@ A.3.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 60]
+Barnes, et al.             Expires 9 May 2021                  [Page 60]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 3
@@ -3413,9 +3413,9 @@ A.3.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 61]
+Barnes, et al.             Expires 9 May 2021                  [Page 61]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -3469,9 +3469,9 @@ A.4.1.  Base Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 62]
+Barnes, et al.             Expires 9 May 2021                  [Page 62]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 0
@@ -3525,9 +3525,9 @@ A.4.1.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 63]
+Barnes, et al.             Expires 9 May 2021                  [Page 63]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -3581,9 +3581,9 @@ A.4.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 64]
+Barnes, et al.             Expires 9 May 2021                  [Page 64]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 1
@@ -3637,9 +3637,9 @@ A.4.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 65]
+Barnes, et al.             Expires 9 May 2021                  [Page 65]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -3693,9 +3693,9 @@ A.4.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 66]
+Barnes, et al.             Expires 9 May 2021                  [Page 66]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 2
@@ -3749,9 +3749,9 @@ A.4.3.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 67]
+Barnes, et al.             Expires 9 May 2021                  [Page 67]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -3805,9 +3805,9 @@ A.4.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 68]
+Barnes, et al.             Expires 9 May 2021                  [Page 68]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 3
@@ -3861,9 +3861,9 @@ A.4.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 69]
+Barnes, et al.             Expires 9 May 2021                  [Page 69]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -3917,9 +3917,9 @@ A.5.1.  Base Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 70]
+Barnes, et al.             Expires 9 May 2021                  [Page 70]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 0
@@ -3973,9 +3973,9 @@ A.5.1.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 71]
+Barnes, et al.             Expires 9 May 2021                  [Page 71]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -4029,9 +4029,9 @@ A.5.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 72]
+Barnes, et al.             Expires 9 May 2021                  [Page 72]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 1
@@ -4085,9 +4085,9 @@ A.5.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 73]
+Barnes, et al.             Expires 9 May 2021                  [Page 73]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -4141,9 +4141,9 @@ A.5.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 74]
+Barnes, et al.             Expires 9 May 2021                  [Page 74]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 2
@@ -4197,9 +4197,9 @@ A.5.3.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 75]
+Barnes, et al.             Expires 9 May 2021                  [Page 75]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -4253,9 +4253,9 @@ A.5.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 76]
+Barnes, et al.             Expires 9 May 2021                  [Page 76]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 3
@@ -4309,9 +4309,9 @@ A.5.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 77]
+Barnes, et al.             Expires 9 May 2021                  [Page 77]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -4365,9 +4365,9 @@ A.6.1.  Base Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 78]
+Barnes, et al.             Expires 9 May 2021                  [Page 78]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 0
@@ -4421,9 +4421,9 @@ A.6.1.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 79]
+Barnes, et al.             Expires 9 May 2021                  [Page 79]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -4477,9 +4477,9 @@ A.6.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 80]
+Barnes, et al.             Expires 9 May 2021                  [Page 80]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 1
@@ -4533,9 +4533,9 @@ A.6.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 81]
+Barnes, et al.             Expires 9 May 2021                  [Page 81]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -4589,9 +4589,9 @@ A.6.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 82]
+Barnes, et al.             Expires 9 May 2021                  [Page 82]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 mode: 2
@@ -4645,9 +4645,9 @@ exporter_secret: 40365288e3146348d6c1da7d4fb57b1fbdae5536ac8c025dc7d9d33
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 83]
+Barnes, et al.             Expires 9 May 2021                  [Page 83]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 A.6.3.1.  Encryptions
@@ -4701,9 +4701,9 @@ pkRm: 040161142294012f7f1e7af7ba86611de6d4cf7a7eb40498b7b40aee7ae2e9d8ac
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 84]
+Barnes, et al.             Expires 9 May 2021                  [Page 84]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 41b6a1615e076e0ffd0239e1e465b0b791601cfb62212732820223a2ef5f0e0ab3d7002c
@@ -4757,9 +4757,9 @@ A.6.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 85]
+Barnes, et al.             Expires 9 May 2021                  [Page 85]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
 sequence number: 0
@@ -4813,9 +4813,9 @@ Authors' Addresses
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 86]
+Barnes, et al.             Expires 9 May 2021                  [Page 86]
 
-Internet-Draft                    HPKE                      October 2020
+Internet-Draft                    HPKE                     November 2020
 
 
    Christopher A. Wood
@@ -4869,4 +4869,4 @@ Internet-Draft                    HPKE                      October 2020
 
 
 
-Barnes, et al.            Expires 26 April 2021                [Page 87]
+Barnes, et al.             Expires 9 May 2021                  [Page 87]
